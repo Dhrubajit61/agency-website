@@ -1,0 +1,111 @@
+.counter-section{
+    margin: 10px 0;
+    padding: 20px;
+}
+.counter-content-header{
+    padding: 10px;
+    
+}
+.counter-content-header h1{
+    font-size: 40px;
+    font-weight: 800;
+    margin:5px 5px 10px 5px;
+}
+.counter-content-header p{
+    padding: 5px;
+}
+.counter-section-container{
+    display: flex;
+}
+.counter-content-info{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+
+}
+.counter-content-icon{
+    width: calc(50% - 20px);
+    margin: 5px;
+    padding: 5px;
+    line-height: 1.5;
+    
+}
+.counter-content-icon h1{
+    font-size: 2.5em;
+}
+.counter-icon{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    
+}
+.counter-icon1{
+ background-color: rgb(218 157 157 / 32%);
+}
+.counter-icon2{
+    background-color: rgba(170, 218, 156, 0.32);
+}
+.counter-icon3{
+    background-color: rgba(153, 181, 229, 0.32);
+}
+.counter-icon4{
+    background-color: rgba(221, 227, 126, 0.32);
+}
+@media (min-width: 768px) and (max-width: 1024px){
+    .counter-section-img img{
+        width: 50vw;
+    }
+    .counter-content-header h1 {
+        font-size: 30px;
+    }
+    .counter-icon{
+        width: 70px;
+        height: 70px;
+    }
+    .counter-content-info{
+        margin: 1px;
+        padding: 1px;
+    }
+    .counter-content-icon h1{
+        font-size: 30px;
+        margin-top: 5px;
+    }
+    .counter-content-header p {
+        padding: 1px;
+    }
+    .counter-section-img img{
+        padding: 15px;
+    }
+}
+@media (max-width:768px){
+    .counter-section-container{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .counter-section-img{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .counter-section-img img{
+        width: 90%;
+    }
+    .counter-content-icon{
+        text-align: center;
+    }
+    .counter-icon{
+        margin-inline: auto;
+    }
+    .counter-content-icon h1{
+        font-size: 2rem;
+    }
+}
+@media (max-width:575px){
+    .counter-content-header{
+        padding:1px;
+    }
+}

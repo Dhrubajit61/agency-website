@@ -1,0 +1,39 @@
+.clientlogo{
+    margin: 2rem 20px;
+    padding: 20px 50px;
+}
+.clientlogo-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.clientlogo-container img{
+    width: 20vw;
+}
+
+.clientlogoicon{
+    opacity: 0.65;
+}
+.clientlogoicon:hover{
+    opacity: 1;
+}
+@media (min-width:576px) and (max-width:768px){
+    .clientlogo{
+        padding: 10px 20px;
+        margin-inline:10px;
+    }
+    .clientlogo-container img{
+        width:125px;
+    }
+}
+@media (max-width:575px){
+    .clientlogo{
+        padding: 20px;
+    }
+    .clientlogo-container{
+        flex-wrap: wrap;
+    }
+    .clientlogo-container img{
+        width: 45%;
+    }
+}

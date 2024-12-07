@@ -1,0 +1,158 @@
+/* Basic styling for the navbar */
+.navbar {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+
+  padding: 10px 20px;
+  transition: all 0.3s ease-out 0s;
+
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background-color: #fff;
+  box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+
+}
+
+.navbar-container {
+  justify-content: space-between;
+}
+
+.harmburger {
+  display: none;
+}
+
+.navbar-logo img {
+  height: 50px;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.navbarisopentrue {
+  visibility: visible;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 9;
+  box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
+  padding: 5px 12px;
+  transition: height 0.6s ease-out;
+}
+
+.navbarisopentrue li {
+  list-style: none;
+}
+
+.navbarisopentrue li a {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 2px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  color: #313450;
+  text-decoration: none;
+  padding: 3px 10px;
+  transition: all 0.3s ease-in-out 0.3s;
+}
+
+.navbarisopenfalse {
+  display: none;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+
+.navbar-menu li {
+  display: inline;
+}
+
+.navbar-menu li a {
+  font-size: 18px;
+  font-weight: 400;
+  color: #313450;
+  text-decoration: none;
+  padding: 8px 16px;
+  transition: all 0.3s ease-out 0s;
+
+}
+
+.navbar-menu li a:hover {
+  background-color: #4E6EF1;
+  border-radius: 2px;
+  color: white;
+}
+
+.active {
+  background-color: rgb(123 165 243 / 78%);
+  border-radius: 5px;
+  color: white !important;
+  /* border-bottom: 3px solid rgb(235, 231, 24); */
+
+
+}
+.visible{
+  display: block;
+  cursor: pointer;
+}
+.invisible{
+  display: none;
+}
+.signup-modal{
+  padding: 20px 20px 15px 20px!important;
+}
+.sign-up-class{
+  color: white!important;
+  background-color: #47d93e;
+  border-radius: 5px!important;
+}
+.sign-up-class:hover{
+  background-color: #30ad29!important;
+  border-radius: 5px;
+  
+}
+.Loginhere{
+  text-align: center;
+  margin-top:5px;
+}
+
+@media (min-width: 900px) and (max-width: 1024px) {
+  .navbar-menu li a {
+    font-size: 17;
+  }
+}
+
+@media(max-width: 899px) {
+  
+
+  .navbar-menu {
+    display: none;
+    gap: 5px;
+  }
+
+  .navbar-menu li a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+  .navbarisopentrue li a{
+    margin: 3px 2px;
+    padding: 5px 10px;
+  }
+  
+}

@@ -1,0 +1,93 @@
+#Portfolio-section{
+    position: relative;
+    padding: 10px;
+    
+}
+
+#Portfolio-section::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../../../src/assets/files//portfolio//portfolio-bg2.avif");
+    background-size: contain;
+    opacity: 0.3;
+    z-index: -1; /* To place it behind content */
+}
+.Portfolio-section-container{
+    margin: 30px auto;
+}
+.Portfolio-section-header{
+    text-align: center;
+    margin: 20px 0px;
+    padding: 20px 0;
+}
+.Portfolio-section-header h1{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.Portfolio-section-image{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+    cursor: pointer;
+    justify-content: space-between;
+
+}
+.Portfolio-item{
+    width: calc(33% - 40px);
+    margin: 10px;
+}
+@media (min-width: 900px) and (max-width:1024px){
+    .Portfolio-section-image{
+        gap: 10px;
+    }
+    .Portfolio-item img{
+        width: 260px;
+    }
+    .Portfolio-section-image{
+        justify-content: center;
+    }
+}
+@media (min-width: 768px) and (max-width:900px){
+    .Portfolio-section-container{
+        margin: 20px 5px;
+    }
+    .Portfolio-item img{
+        width: 220px;
+    }
+    .Portfolio-section-image{
+        gap: 20px;
+        justify-content: center;
+    }
+}
+@media (min-width: 576px) and (max-width:767px){
+    .Portfolio-section-container{
+        margin: 20px 5px;
+    }
+    .Portfolio-item img{
+        width: 28vw;
+    }
+    .Portfolio-section-image{
+        gap: 20px;
+        justify-content: center;
+    }
+}
+@media (max-width:575px){
+    .Portfolio-section-image{
+        justify-content: center;
+        gap:10px;
+    }
+    .Portfolio-item{
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+    .Portfolio-item img{
+        width: 100%;
+    }
+}

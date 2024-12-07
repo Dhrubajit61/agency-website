@@ -1,0 +1,111 @@
+.contact-header{
+    text-align: center;
+    padding: 18px;
+    line-height: 2;
+}
+.contact-header h1{
+    font-size: 23px;
+}
+.contact-header p{
+    font-size: 18px;
+}
+.contact-form-area{
+    display: flex;
+    flex-direction: column;
+    
+}
+.contact-form{
+    display: flex;
+    flex-direction: column;
+  justify-content: center;
+}
+.contact-form-single-input{
+     display: flex;
+     flex: 1;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+
+}
+.contact-form-single-input input{
+    box-sizing: border-box;
+    width: calc(50% - 30px);
+    padding: 20px;
+    margin: 5px;
+    border: 1px #c6cde9 solid;
+    border-radius: 5px;
+    box-shadow: 0px 20px 50px 0px rgba(41, 41, 41, 0.093);
+}
+.contact-form-single-input input:focus{
+    outline: 1px #a5b3ea solid;
+}
+#Contact-message{
+    width: calc(100% - 30px);
+    height: 80px;
+    margin: 10px;
+    border: 1px #c2c9e5 solid;
+    border-radius: 5px;
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.05);
+}
+.contact-message-div input[type="text"]:focus{
+    outline: 1px #b5bfe6 solid;
+}
+.contact-message-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.contact-message-div input[type="submit"]{
+    font-size: 18px;
+    width:20%;
+    margin: 10px auto;
+    padding: 10px;
+}
+.checkmodal{
+    width: 400px!important;
+    padding: 50px 30px!important;
+}
+.checkmark{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.checkmark img{
+    margin-inline:auto;
+    width: 60px;
+    margin-bottom: 10px;
+}
+.checkmark h4{
+    margin-bottom: 10px;
+}
+.checkerror p{
+    text-align: initial;
+    color: rgb(217, 58, 58);
+}
+@media (min-width:768px) and (max-width:1199px){
+    .contact-container{
+        margin:10px 20px;
+    }
+
+}
+@media (min-width: 576px) and (max-width: 876px){
+    .contact-message-div input[type="submit"]{
+        font-size: 17px;
+        width: 30%;
+    }
+}
+@media (max-width:575px){
+    .contact-container{
+        margin-inline:10px;
+    }
+    .contact-form-single-input input{
+        width: 100%;
+    }
+    .contact-message-div input[type="submit"]{
+        width: 220px;
+    }
+    .checkmodal{
+        width: 80vw!important;
+        padding: 40px 20px !important;
+    }
+}

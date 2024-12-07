@@ -1,0 +1,28 @@
+.login-modal{
+    width: 450px!important;
+    background-color: #ecf4f2!important;
+}
+.login-modal .form-group{
+    margin-bottom: 5px;
+}
+.login-modal h2{
+    margin: 6px auto 30px auto!important;
+}
+.login-modal label{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.login-modal input{
+    border-radius: 0px;
+}
+.login-modal button[type="submit"]{
+    width: 100%!important;
+    margin-top: 10px;
+}
+.login-modal input,select:focus{
+    outline: none;
+}
+.login-modal p{
+    text-align: right;
+    font-size: 15px;
+}

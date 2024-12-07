@@ -1,0 +1,96 @@
+#About{
+    margin: 2rem 10px;
+    padding: 10px 20px;
+}
+.about-section{
+    display: flex;
+    padding: 5px;
+    gap: 1.7em;
+}
+.about-content{
+    padding: 1.3em;
+}
+.about-content h1{
+    font-family: "Archivo Black", sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: #313450;
+    margin-bottom: 20px;
+}
+.about-copntent-title-p{
+    font-size: 19px ;
+    font-weight: 400;
+}
+.hidden {
+    opacity: 0;
+    transform: translateX(-150px); /* Adjust as needed */
+    
+  }
+  
+  .visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .hidden-content {
+    opacity: 0;
+    transform: translateX(150px); /* Adjust as needed */
+    
+  }
+  
+  .visible-content {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  @media(min-width:768px) and (max-width: 1024px){
+    .faq-item{
+      padding: 8px;
+      margin: 5px;
+    }
+  }
+  @media(min-width:576px) and (max-width:768px){
+    .about-section{
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      
+    }
+    
+    .about-image{
+      
+    }
+    .about-image img{
+      width: 400px;
+    }
+  }
+  @media(max-width:575px){
+    #About{
+      margin:1rem 4px;
+      padding: 10px;
+    }
+    .about-section{
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      
+    }
+    .about-image img{
+      width: 100%;
+    }
+    .about-content{
+      padding: 2px;
+    }
+    .about-content h1{
+      font-size: 30px;
+      font-weight: 500;
+    }
+    .faq{
+      padding: 15px 1px!important;
+    }
+    .faq-answer{
+      
+    }
+
+  }
+  

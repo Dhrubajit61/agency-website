@@ -1,0 +1,51 @@
+html, body {
+    overflow-x: hidden;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    color:#5b5f81;
+    
+    
+}
+body{
+    
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    overflow-x: hidden;
+}
+p{
+    line-height: 28px;
+    font-size: 18px;
+    letter-spacing: .5px;
+    color: #6B6F92;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+.container{
+    flex: 1;
+    margin-right: auto;
+    margin-left: auto;
+}
+select{
+    border: 1px solid #ddd;
+}
+/* Starting hidden state */
+
+  
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1140px;
+    }
+}
+@media (min-width: 768px) and (max-width: 1024px){
+    .container{
+        margin-inline: 10px;
+    }
+}

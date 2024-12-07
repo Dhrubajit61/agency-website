@@ -1,0 +1,154 @@
+.Ctasection{
+    margin: 40px 0;
+    padding:40px 0;
+    position: relative;
+}
+.Ctasection::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("../../../src/assets/files/cta-bg.jpg");
+    background-size: cover;
+    opacity: 0.4;
+    z-index: -1; /* To place it behind content */
+}
+.Ctacontainer{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    padding: 60px;
+    justify-content: center;
+    align-items: center;
+}
+.ctatitle{
+    width: 50%;
+    
+}
+.ctatitle h1{
+    margin: 10px 0;
+    font-size: 34px;
+    font-weight: 800;
+}
+.ctatitle p{
+    line-height: 28px;
+    font-size: 18px;
+    letter-spacing: .5px;
+    color: #6B6F92;
+}
+.ctabutton{
+    width: 50%;
+    text-align: right;
+}
+.ctabutton a{
+    text-decoration: none;
+}
+
+  
+  /* Form styling */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    resize: none;
+  }
+  
+  button[type="submit"] {
+    padding: 8px 16px;
+    background-color: #4e6ef1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3d5bb7;
+  }
+  #message{
+    height: 100px;
+  }
+  .hidden-cta {
+    opacity: 0;
+    transform: translateY(150px); /* Adjust as needed */
+    
+  }
+  
+  .visible-cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .btn-submit{
+    text-align: center;
+  }
+  .contact-message2{
+    width: 100%!important;
+    margin: 2px !important;
+  }
+    
+  @media only screen and (max-width: 576px) {
+    .modal{
+        width:80vw;
+    }
+    #message{
+        height: 80px;
+      }
+  }
+  @media (min-width:768px) and (max-width: 1100px){
+    #message{
+      height:66px;
+    }
+  }
+  @media (min-width:576px) and (max-width: 768px){
+    .Ctasection{
+      margin: 30px 0px;
+      padding: 22px 0px;
+    }
+    .Ctacontainer{
+      padding: 20px;
+    }
+    .ctatitle h1{
+      font-size: 28px;
+    }
+
+  }
+  @media (max-width: 575px){
+    .Ctacontainer{
+      flex-wrap: wrap;
+      padding: 25px;
+    }
+    .ctatitle{
+      width: 100%;
+    }
+    .ctabutton{
+      width: 100%;
+      text-align: center;
+    }
+    .ctabutton button{
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .modal{
+      width: 90vw;
+      padding: 15px;
+    }
+    .form-group{
+      margin-bottom: 5px;
+    }
+    
+  }
+  
