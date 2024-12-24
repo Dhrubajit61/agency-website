@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserAccount;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class user_accounts extends Controller
 {
@@ -12,7 +13,7 @@ class user_accounts extends Controller
 {
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|max:255',
-        'email' => 'required|email|max:255',
+        'email' => 'required|email|unique:user_accounts,email|max:255',
         'country_code'=>'nullable|string|max:20',
         'contactnumber' => 'nullable|max:13',
         'password' => 'required|max:255',
@@ -38,9 +39,18 @@ class user_accounts extends Controller
     }
 
     try {
-        $formData = UserAccount::create($validator->validated());
+        $data = $validator->validated();
+        $data['password'] = Hash::make($data['password']);
+        $data['confirmedpassword'] = Hash::make($data['confirmedpassword']);
+        //unset($data['confirmedpassword']); // Remove confirmed password field
 
-        return response()->json(['success' => true, 'data' => $formData], 201);
+        // Create user account
+        $formData = UserAccount::create($data);
+
+        return response()->json([
+            'success' => true,
+            'data' => $formData
+        ], 201);
     } catch (\Exception $e) {
         return response()->json([
             'success' => false,

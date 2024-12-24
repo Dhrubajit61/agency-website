@@ -69,7 +69,7 @@ const Login = () => {
     const delay = new Promise((resolve) => setTimeout(resolve, 1000));
     try {
       const response = await Promise.all([
-        axios.post(`${apiUrl}/api/submit-form`, formData, {
+        axios.post(`${apiUrl}/api/login`, formData, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -78,14 +78,18 @@ const Login = () => {
       ]);
 
       if (response[0].data.success) {
-        setIsModalOpen(false);
-        setIsModalOpen2(true);
+        // setIsModalOpen(false);
+        // setIsModalOpen2(true);
 
-        setResponse(response[0].data.success);
-        setFormData({
-          email: "",
-          password: "",
-        });
+        // setResponse(response[0].data.success);
+        // setFormData({
+        //   email: "",
+        //   password: "",
+        // });
+        alert("Login successful!");
+        localStorage.setItem("token", response.data.token); // Save token
+        // Redirect user, e.g.:
+        // window.location.href = "/dashboard";
       } else {
         setResponse(response[0].data.errors);
 

@@ -36,11 +36,15 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
+    'api' => [
+        'driver' => 'passport', // Or 'sanctum' depending on what you are using
+        'provider' => 'user_accounts',  // Custom provider
+    ],
+],
 
     /*
     |--------------------------------------------------------------------------
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'user_accounts' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\UserAccount::class, // Use the custom model for "user_accounts" table
+    ],
     ],
 
     /*
