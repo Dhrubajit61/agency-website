@@ -23,15 +23,15 @@ class LoginController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'User with this email does not exist.'
-            ], 404);
+            ], 200);
         }
 
         // Check if the password matches
         if (!Hash::check($request->input('password'), $user->password)) {
             return response()->json([
                 'success' => false,
-                'message' => 'Password is incorrect.'
-            ], 401);
+                'message' => ['Password is incorrect.']
+            ], 200);
         }
 
         // Attempt to authenticate using Passport personal access token
@@ -40,8 +40,8 @@ class LoginController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Login successful.',
-            'token' => $token,
+            // 'token' => $token,
             'user' => $user
-        ], 200);
+        ], 200)->cookie('access_token', $token, 60, '/', null, true, true);
     }
 }

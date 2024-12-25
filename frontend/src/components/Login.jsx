@@ -8,16 +8,19 @@ import { MdRemoveRedEye } from "react-icons/md";
 import { IoMdEyeOff } from "react-icons/io";
 import Preloader2 from "./Preloader2";
 import "../assets/css/Modal.css";
+import { Responsecontext } from "./Contextapi";
+import { Openmodal2context } from "./Contextapi";
+
 const Login = () => {
   const apiUrl = "http://127.0.0.1:8000";
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
     Openloginmodalcontext
   ); // Use context to get the value
-  const [response, setResponse] = useState([]);
+  const { response, setResponse } = useContext(Responsecontext);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const { isModalOpen2, setIsModalOpen2 } = useContext(Openmodal2context);
   const handleCloseModal = () => {
     setIsLoginModalOpen(false);
   };
@@ -68,7 +71,7 @@ const Login = () => {
     setLoading(true);
     const delay = new Promise((resolve) => setTimeout(resolve, 1000));
     try {
-      const response = await Promise.all([
+      const response1 = await Promise.all([
         axios.post(`${apiUrl}/api/login`, formData, {
           headers: {
             "Content-Type": "application/json",
@@ -77,7 +80,7 @@ const Login = () => {
         delay,
       ]);
 
-      if (response[0].data.success) {
+      if (response1[0].data.success) {
         // setIsModalOpen(false);
         // setIsModalOpen2(true);
 
@@ -87,17 +90,18 @@ const Login = () => {
         //   password: "",
         // });
         alert("Login successful!");
-        localStorage.setItem("token", response.data.token); // Save token
+        console.log(response);
+        // localStorage.setItem("token", response[0].data.token); // Save token
         // Redirect user, e.g.:
         // window.location.href = "/dashboard";
       } else {
-        setResponse(response[0].data.errors);
-
+        setResponse(response1[0].data.message);
+        console.log(response);
         setIsModalOpen2(true);
       }
     } catch (error) {
       alert(error.message + " occured, Please try again later");
-      // alert("Error while submitting the form!", error);
+      console.log(response);
     } finally {
       setLoading(false); // Stop loader after both API call and delay
     }
@@ -185,7 +189,7 @@ const Login = () => {
         </div>
       </div>
 
-      {isModalOpen2 && (
+      {/* {isModalOpen2 && (
         <div className="modal-overlay" onClick={handleOverlayClick2}>
           <div className="modal checkmodal">
             <button className="close-button" onClick={handleCloseModal2}>
@@ -214,7 +218,7 @@ const Login = () => {
             </h1>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 };
