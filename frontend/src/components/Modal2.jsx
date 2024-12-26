@@ -5,6 +5,7 @@ import { Openmodal2context } from "./Contextapi";
 import checkmark from "../assets/files/checkmark.png";
 import { Openloginmodalcontext } from "./Contextapi";
 import "../assets/css/Modal2.css";
+import { GoDotFill } from "react-icons/go";
 const Modal2 = () => {
   const { response, setResponse } = useContext(Responsecontext);
   const { isSignupModalOpen, setIsSignupModalOpen } =
@@ -57,11 +58,7 @@ const Modal2 = () => {
             ) : (
               <div className="checkmark checkerror">
                 {response &&
-                  response.map((error, index) => (
-                    <p key={index}>
-                      * {index + 1} {error}
-                    </p>
-                  ))}
+                  response.map((error, index) => <p key={index}>* {error}</p>)}
               </div>
             )}
           </h1>

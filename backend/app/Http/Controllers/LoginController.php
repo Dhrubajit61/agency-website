@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (!$user) {
             return response()->json([
                 'success' => false,
-                'message' => 'User with this email does not exist.'
+                'message' => ['User with this email does not exist.']
             ], 200);
         }
 
