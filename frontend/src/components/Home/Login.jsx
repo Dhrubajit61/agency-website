@@ -1,15 +1,16 @@
-import { countries } from "../assets/Countrylist";
+import { countries } from "../../assets/Countrylist";
 import { useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
-import "../assets/css/login.css";
+import "../../assets/css/login.css";
 import { Openloginmodalcontext } from "./Contextapi";
 import { MdRemoveRedEye } from "react-icons/md";
 import { IoMdEyeOff } from "react-icons/io";
 import Preloader2 from "./Preloader2";
-import "../assets/css/Modal.css";
+import "../../assets/css/Modal.css";
 import { Responsecontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const apiUrl = "http://127.0.0.1:8000";
@@ -49,6 +50,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  // Use navigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -90,18 +94,18 @@ const Login = () => {
         //   password: "",
         // });
         alert("Login successful!");
-        console.log(response);
-        // localStorage.setItem("token", response[0].data.token); // Save token
+        console.log(response1);
+        localStorage.setItem("access_token", response1[0].data.token); // Save token
         // Redirect user, e.g.:
-        // window.location.href = "/dashboard";
+        navigate("/Dashboard");
       } else {
         setResponse(response1[0].data.message);
-        console.log(response);
+        console.log("else part");
         setIsModalOpen2(true);
       }
     } catch (error) {
       alert(error.message + " occured, Please try again later");
-      console.log(response);
+      console.log(error);
     } finally {
       setLoading(false); // Stop loader after both API call and delay
     }

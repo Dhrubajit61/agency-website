@@ -1,6 +1,6 @@
-import "../assets/css/Navbar.css"; // Assuming you're using an external CSS file for styling
-import logo from "../assets/files/logo.svg";
-import "../assets/css/Index.css";
+import "../../assets/css/Navbar.css"; // Assuming you're using an external CSS file for styling
+import logo from "../../assets/files/logo.svg";
+import "../../assets/css/Index.css";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";

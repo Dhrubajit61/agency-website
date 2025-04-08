@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "../assets/css/Ctasection.css";
-import checkmark from "../assets/files/checkmark.png";
+import "../../assets/css/Ctasection.css";
+import checkmark from "../../assets/files/checkmark.png";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import Preloader2 from "./Preloader2";
-import "../assets/css/Modal.css";
+import "../../assets/css/Modal.css";
 // Signup and login modal start
 import Signup from "./Signup";
 import { Openmodalcontext } from "./Contextapi";

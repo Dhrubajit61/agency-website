@@ -1,10 +1,10 @@
-import "../assets/css/Portfolio.css";
-import portfolio1 from "../assets/files/portfolio/portfolio-1.jpg";
-import portfolio2 from "../assets/files/portfolio/portfolio-2.jpg";
-import portfolio3 from "../assets/files/portfolio/portfolio-3.jpg";
-import portfolio4 from "../assets/files/portfolio/portfolio-4.jpg";
-import portfolio5 from "../assets/files/portfolio/portfolio-5.jpg";
-import portfoliobg from "../assets/files/portfolio/portfolio-bg.jpg";
+import "../../assets/css/Portfolio.css";
+import portfolio1 from "../../assets/files/portfolio/portfolio-1.jpg";
+import portfolio2 from "../../assets/files/portfolio/portfolio-2.jpg";
+import portfolio3 from "../../assets/files/portfolio/portfolio-3.jpg";
+import portfolio4 from "../../assets/files/portfolio/portfolio-4.jpg";
+import portfolio5 from "../../assets/files/portfolio/portfolio-5.jpg";
+import portfoliobg from "../../assets/files/portfolio/portfolio-bg.jpg";
 
 const Portfolio = () => {
   return (

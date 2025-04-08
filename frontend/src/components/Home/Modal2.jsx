@@ -2,9 +2,9 @@ import { useContext, useEffect } from "react";
 import { Responsecontext } from "./Contextapi";
 import { Openmodalcontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
-import checkmark from "../assets/files/checkmark.png";
+import checkmark from "../../assets/files/checkmark.png";
 import { Openloginmodalcontext } from "./Contextapi";
-import "../assets/css/Modal2.css";
+import "../../assets/css/Modal2.css";
 import { GoDotFill } from "react-icons/go";
 const Modal2 = () => {
   const { response, setResponse } = useContext(Responsecontext);

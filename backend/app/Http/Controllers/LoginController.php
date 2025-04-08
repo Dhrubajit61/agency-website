@@ -40,7 +40,7 @@ class LoginController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Login successful.',
-            // 'token' => $token,
+            'token' => $token,
             'user' => $user
         ], 200)->cookie('access_token', $token, 60, '/', null, true, true);
     }

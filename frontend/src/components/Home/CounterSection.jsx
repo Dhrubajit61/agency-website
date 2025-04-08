@@ -1,5 +1,5 @@
-import counterimage from "../assets/files/counter-up-img.svg";
-import "../assets/css/Counter.css";
+import counterimage from "../../assets/files/counter-up-img.svg";
+import "../../assets/css/Counter.css";
 import { FaRegFaceGrinBeam } from "react-icons/fa6";
 import { GoCheck } from "react-icons/go";
 import { IoEarthSharp } from "react-icons/io5";

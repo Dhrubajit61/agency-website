@@ -1,15 +1,15 @@
-import { countries } from "../assets/Countrylist";
+import { countries } from "../../assets/Countrylist";
 import { useState } from "react";
 import { useContext } from "react";
 import { Openmodalcontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
 import { Openloginmodalcontext } from "./Contextapi";
 import axios from "axios";
-import "../assets/css/signup.css";
+import "../../assets/css/signup.css";
 import { MdRemoveRedEye } from "react-icons/md";
 import { IoMdEyeOff } from "react-icons/io";
 import Preloader2 from "./Preloader2";
-import "../assets/css/Modal.css";
+import "../../assets/css/Modal.css";
 import { Responsecontext } from "./Contextapi";
 
 const Signup = () => {

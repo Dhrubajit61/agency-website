@@ -46,10 +46,12 @@ class user_accounts extends Controller
 
         // Create user account
         $formData = UserAccount::create($data);
+        $token = $formData->createToken('authToken')->accessToken;
 
         return response()->json([
             'success' => true,
-            'data' => $formData
+            'data' => $formData,
+            'token' => $token
         ], 201);
     } catch (\Exception $e) {
         return response()->json([

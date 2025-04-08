@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../assets/css/Faq.css";
+import "../../assets/css/Faq.css";
 import { LuPlus, LuMinus } from "react-icons/lu";
 const Faq = () => {
   const faqData = [

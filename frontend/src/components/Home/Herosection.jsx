@@ -1,5 +1,5 @@
-import heroimage from "../assets/files/hero-img.svg";
-import "../assets/css/Hero.css";
+import heroimage from "../../assets/files/hero-img.svg";
+import "../../assets/css/Hero.css";
 function Herosection() {
   return (
     <section id="home">

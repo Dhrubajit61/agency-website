@@ -1,4 +1,4 @@
-import "../assets/css/Preloader2.css";
+import "../../assets/css/Preloader2.css";
 const Preloader2 = () => {
   return (
     <div className="preloader2">

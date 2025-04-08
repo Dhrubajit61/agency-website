@@ -1,5 +1,5 @@
-import aboutimage from "../assets/files/about-img.svg";
-import "../assets/css/About.css";
+import aboutimage from "../../assets/files/about-img.svg";
+import "../../assets/css/About.css";
 import { useInView } from "react-intersection-observer";
 import Faq from "./Faq";
 import { useEffect } from "react";

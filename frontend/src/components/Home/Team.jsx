@@ -1,8 +1,8 @@
-import "../assets/css/Team.css";
-import member1 from "../assets/files/Team/team-1.jpg";
-import member2 from "../assets/files/Team/team-2.jpg";
-import member3 from "../assets/files/Team/team-3.jpg";
-import member4 from "../assets/files/Team/team-4.jpg";
+import "../../assets/css/Team.css";
+import member1 from "../../assets/files/Team/team-1.jpg";
+import member2 from "../../assets/files/Team/team-2.jpg";
+import member3 from "../../assets/files/Team/team-3.jpg";
+import member4 from "../../assets/files/Team/team-4.jpg";
 
 const Team = () => {
   return (

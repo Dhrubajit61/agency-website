@@ -1,5 +1,5 @@
-import Servicesbg from "../assets/files/Services-bg.jpg";
-import "../assets/css/Services.css";
+import Servicesbg from "../../assets/files/Services-bg.jpg";
+import "../../assets/css/Services.css";
 import { FaPaintBrush } from "react-icons/fa";
 import { SiBookstack } from "react-icons/si";
 import { FaMagnifyingGlass } from "react-icons/fa6";

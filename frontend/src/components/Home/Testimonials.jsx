@@ -1,4 +1,4 @@
-import "../assets/css/Testimonials.css";
+import "../../assets/css/Testimonials.css";
 import { useState, useEffect } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import { FaQuoteRight } from "react-icons/fa";
@@ -8,9 +8,9 @@ import { MdStar } from "react-icons/md";
 import { IoStarHalfOutline } from "react-icons/io5";
 import { MdOutlineStarBorder } from "react-icons/md";
 import useWindowSize from "./useWindowSize";
-import Testimonial1 from "../assets/files/testimonials/testimonial-1.png";
-import Testimonial2 from "../assets/files/testimonials/testimonial-2.png";
-import Testimonial3 from "../assets/files/testimonials/testimonial-3.png";
+import Testimonial1 from "../../assets/files/testimonials/testimonial-1.png";
+import Testimonial2 from "../../assets/files/testimonials/testimonial-2.png";
+import Testimonial3 from "../../assets/files/testimonials/testimonial-3.png";
 
 const TestimonialSlider = () => {
   const { width, height } = useWindowSize();

@@ -1,20 +1,10 @@
-import Navbar from "./components/Navbar";
 import React, { useState, useEffect } from "react";
 import Preloader from "./components/Preloader";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./assets/css/Index.css";
-import Herosection from "./components/Herosection";
-import { BrowserRouter, Router } from "react-router-dom";
-import Services from "./components/Services";
-import ContactUs from "./components/ContactUs";
-import Clientlogo from "./components/clientlogo";
-import About from "./components/About";
-import CounterSection from "./components/CounterSection";
-import Portfolio from "./components/Portfolio";
-
-import Team from "./components/Team";
-import TestimonialSlider from "./components/Testimonials";
-import Cta from "./components/Ctasection";
-import Footer from "./components/Footer";
+import Home from "./components/Home";
+import Dashboard from "./components/Client_dashboard/Dashboard";
+import Login from "./components/Home/Login";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,19 +24,12 @@ function App() {
       ) : (
         <>
           <BrowserRouter>
-            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/dashboard/*" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
           </BrowserRouter>
-          <Herosection />
-          <Clientlogo />
-          <About />
-          <Services />
-          <CounterSection />
-          <Portfolio />
-          <TestimonialSlider />
-          <Cta />
-          <Team />
-          <ContactUs />
-          <Footer />
         </>
       )}
     </>

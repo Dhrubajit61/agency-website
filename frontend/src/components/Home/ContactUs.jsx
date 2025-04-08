@@ -1,7 +1,7 @@
-import heroimage from "../assets/files/hero-img.svg";
-import "../assets/css/Contact.css";
+import heroimage from "../../assets/files/hero-img.svg";
+import "../../assets/css/Contact.css";
 import { useState } from "react";
-import checkmark from "../assets/files/checkmark.png";
+import checkmark from "../../assets/files/checkmark.png";
 import axios from "axios";
 import Preloader2 from "./Preloader2";
 function ContactUs() {
