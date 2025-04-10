@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
 import "../../assets/css/login.css";
-import { Openloginmodalcontext } from "./Contextapi";
+import { OpenLoginModalContext } from "./Contextapi";
 import { MdRemoveRedEye } from "react-icons/md";
 import { IoMdEyeOff } from "react-icons/io";
 import Preloader2 from "./Preloader2";
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const apiUrl = "http://127.0.0.1:8000";
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
-    Openloginmodalcontext
+    OpenLoginModalContext
   ); // Use context to get the value
   const { response, setResponse } = useContext(Responsecontext);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -47,8 +47,8 @@ const Login = () => {
     }
   };
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "Ji@gmail.com",
+    password: "123",
   });
 
   // Use navigate

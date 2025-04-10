@@ -5,15 +5,16 @@ import Preloader2 from "../Home/Preloader2";
 import "../../assets/css/login.css";
 import "../../assets/css/Modal.css";
 import { useContext } from "react";
-import { Openloginmodalcontext } from "../Home/Contextapi";
+import { OpenLoginModalContext } from "../Home/Contextapi";
 
 const Dashboard = () => {
   const navigate = useNavigate();
   const apiUrl = "http://127.0.0.1:8000";
   const [loading, setLoading] = useState(false);
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
-    Openloginmodalcontext
+    OpenLoginModalContext
   );
+
   const [successfullogout, setSuccessfullogout] = useState(false);
 
   useEffect(() => {
@@ -55,7 +56,9 @@ const Dashboard = () => {
     }, 500);
 
     setTimeout(() => {
-      navigate("/login");
+      setIsLoginModalOpen(true);
+      console.log(isLoginModalOpen);
+      navigate("/");
     }, 2000);
   };
   const handleOverlayClick = (e) => {

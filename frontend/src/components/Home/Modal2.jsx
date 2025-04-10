@@ -3,7 +3,7 @@ import { Responsecontext } from "./Contextapi";
 import { Openmodalcontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
 import checkmark from "../../assets/files/checkmark.png";
-import { Openloginmodalcontext } from "./Contextapi";
+import { OpenLoginModalContext } from "./Contextapi";
 import "../../assets/css/Modal2.css";
 import { GoDotFill } from "react-icons/go";
 const Modal2 = () => {
@@ -12,7 +12,7 @@ const Modal2 = () => {
     useContext(Openmodalcontext); // Use context to get the value
   const { isModalOpen2, setIsModalOpen2 } = useContext(Openmodal2context);
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
-    Openloginmodalcontext
+    OpenLoginModalContext
   );
 
   const handleopenlogin = () => {

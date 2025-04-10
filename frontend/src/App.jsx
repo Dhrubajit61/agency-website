@@ -5,6 +5,7 @@ import "./assets/css/Index.css";
 import Home from "./components/Home";
 import Dashboard from "./components/Client_dashboard/Dashboard";
 import Login from "./components/Home/Login";
+import IsLoginModalOpenprovider from "./components/Contexapiproviders/IsLoginModalOpenprovider";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -24,11 +25,13 @@ function App() {
       ) : (
         <>
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/dashboard/*" element={<Dashboard />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
+            <IsLoginModalOpenprovider>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/dashboard/*" element={<Dashboard />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+            </IsLoginModalOpenprovider>
           </BrowserRouter>
         </>
       )}

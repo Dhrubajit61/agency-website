@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { Openmodalcontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
-import { Openloginmodalcontext } from "./Contextapi";
+import { OpenLoginModalContext } from "./Contextapi";
 import axios from "axios";
 import "../../assets/css/signup.css";
 import { MdRemoveRedEye } from "react-icons/md";
@@ -17,7 +17,7 @@ const Signup = () => {
   const { isSignupModalOpen, setIsSignupModalOpen } =
     useContext(Openmodalcontext); // Use context to get the value
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
-    Openloginmodalcontext
+    OpenLoginModalContext
   ); // Use context to get the value
   const { response, setResponse } = useContext(Responsecontext);
   const [selectedCountry, setSelectedCountry] = useState("");

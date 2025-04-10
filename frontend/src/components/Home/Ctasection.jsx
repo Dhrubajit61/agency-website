@@ -8,7 +8,7 @@ import "../../assets/css/Modal.css";
 // Signup and login modal start
 import Signup from "./Signup";
 import { Openmodalcontext } from "./Contextapi";
-import { Openloginmodalcontext } from "./Contextapi";
+import { OpenLoginModalContext } from "./Contextapi";
 import Login from "./Login";
 //Signup and login modal end
 const Cta = () => {
@@ -117,12 +117,12 @@ const Cta = () => {
       <Openmodalcontext.Provider
         value={{ isSignupModalOpen, setIsSignupModalOpen }}
       >
-        <Openloginmodalcontext.Provider
+        <OpenLoginModalContext.Provider
           value={{ isLoginModalOpen, setIsLoginModalOpen }}
         >
           {isSignupModalOpen && <Signup></Signup>}
           {isLoginModalOpen && <Login></Login>}
-        </Openloginmodalcontext.Provider>
+        </OpenLoginModalContext.Provider>
       </Openmodalcontext.Provider>
     </section>
   );

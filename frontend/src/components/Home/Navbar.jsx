@@ -1,7 +1,7 @@
 import "../../assets/css/Navbar.css"; // Assuming you're using an external CSS file for styling
 import logo from "../../assets/files/logo.svg";
 import "../../assets/css/Index.css";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import useWindowSize from "./useWindowSize";
@@ -12,11 +12,13 @@ import axios from "axios";
 import Signup from "./Signup";
 import { Openmodalcontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
-import { Openloginmodalcontext } from "./Contextapi";
+import { OpenLoginModalContext } from "./Contextapi";
 import { Responsecontext } from "./Contextapi";
 import Login from "./Login";
 import Modal2 from "./Modal2";
 //Signup and login modal end
+
+//import useContex
 
 const Navbar = () => {
   const [response, setResponse] = useState([]);
@@ -41,7 +43,9 @@ const Navbar = () => {
 
   //Signup and Login modal open & close --- start
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
+    OpenLoginModalContext
+  );
 
   const handleOpenModal = () => {
     setIsSignupModalOpen(true);
@@ -242,7 +246,7 @@ const Navbar = () => {
       <Openmodalcontext.Provider
         value={{ isSignupModalOpen, setIsSignupModalOpen }}
       >
-        <Openloginmodalcontext.Provider
+        <OpenLoginModalContext.Provider
           value={{ isLoginModalOpen, setIsLoginModalOpen }}
         >
           <Openmodal2context.Provider value={{ isModalOpen2, setIsModalOpen2 }}>
@@ -252,7 +256,7 @@ const Navbar = () => {
               {isModalOpen2 && <Modal2></Modal2>}
             </Responsecontext.Provider>
           </Openmodal2context.Provider>
-        </Openloginmodalcontext.Provider>
+        </OpenLoginModalContext.Provider>
       </Openmodalcontext.Provider>
     </>
   );
