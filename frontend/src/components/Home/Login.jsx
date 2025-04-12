@@ -11,6 +11,7 @@ import "../../assets/css/Modal.css";
 import { Responsecontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
 import { useNavigate } from "react-router-dom";
+import loading_gif from "../../assets/files/loading_gif.gif";
 
 const Login = () => {
   const apiUrl = "http://127.0.0.1:8000";
@@ -18,6 +19,7 @@ const Login = () => {
     OpenLoginModalContext
   ); // Use context to get the value
   const { response, setResponse } = useContext(Responsecontext);
+  const [loginsuccess, setLoginsuccess] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -93,11 +95,15 @@ const Login = () => {
         //   email: "",
         //   password: "",
         // });
-        alert("Login successful!");
+        // alert("Login successful!");
+        setLoginsuccess(true);
+
         console.log(response1);
         localStorage.setItem("access_token", response1[0].data.token); // Save token
         // Redirect user, e.g.:
-        navigate("/Dashboard");
+        setTimeout(() => {
+          // navigate("/Dashboard");
+        }, 2000);
       } else {
         setResponse(response1[0].data.message);
         console.log("else part");
@@ -190,6 +196,29 @@ const Login = () => {
               </div>
             </form>
           </div>
+          {loginsuccess && (
+            <div>
+              <h3
+                style={{
+                  color: "green",
+                  marginTop: "10px",
+                  fontSize: "18px",
+                  textAlign: "center",
+                }}
+              >
+                Login Successful. Redirecting to Dashboard page{" "}
+                <img
+                  src={loading_gif}
+                  alt=""
+                  style={{
+                    height: "25px",
+                    marginBottom: "-5px",
+                    marginLeft: "5px",
+                  }}
+                />{" "}
+              </h3>
+            </div>
+          )}
         </div>
       </div>
 

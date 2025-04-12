@@ -6,6 +6,7 @@ import "../../assets/css/login.css";
 import "../../assets/css/Modal.css";
 import { useContext } from "react";
 import { OpenLoginModalContext } from "../Home/Contextapi";
+import loading_gif from "../../assets/files/loading_gif.gif";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Dashboard = () => {
       navigate("/");
     }, 2000);
   };
+
   const handleOverlayClick = (e) => {
     // Check if click is outside the modal area
     if (e.target.classList.contains("modal-overlay")) {
@@ -99,12 +101,31 @@ const Dashboard = () => {
         <div>
           <h1>Dashboard</h1>
           <p>Welcome to your dashboard! You are authenticated.</p>
+
           <button onClick={handlelogoutclick}>Logout here</button>
         </div>
       ) : (
         <div className="modal-overlay">
-          <div className="modal login-modal">
+          <div
+            className="modal login-modal"
+            style={{ backgroundColor: "#fff!important", textAlign: "center" }}
+          >
             <h1>Logged out successfully</h1>
+            <br />
+            <div>
+              <h3>
+                Redirecting to Login page{" "}
+                <img
+                  src={loading_gif}
+                  alt=""
+                  style={{
+                    height: "25px",
+                    marginBottom: "-5px",
+                    marginLeft: "5px",
+                  }}
+                />{" "}
+              </h3>
+            </div>
           </div>
         </div>
       )}
