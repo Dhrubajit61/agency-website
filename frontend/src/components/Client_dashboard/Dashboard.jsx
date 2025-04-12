@@ -17,13 +17,14 @@ const Dashboard = () => {
   );
 
   const [successfullogout, setSuccessfullogout] = useState(false);
-
+  const [timer, setTimer] = useState(5);
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("access_token"); // ⚠️ For now using localStorage
 
       if (!token) {
-        navigate("/login");
+        setIsLoginModalOpen(true);
+        navigate("/");
         return;
       }
 
@@ -37,7 +38,8 @@ const Dashboard = () => {
         console.log("User info:", response.data);
 
         if (!response.data.valid) {
-          navigate("/login");
+          setIsLoginModalOpen(true);
+          navigate("/");
         }
       } catch (error) {
         console.error("Error validating token:", error);
@@ -48,19 +50,33 @@ const Dashboard = () => {
     checkToken();
   }, [navigate]);
 
+  useEffect(() => {
+    let countdownInterval;
+
+    if (successfullogout) {
+      countdownInterval = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer <= 1) {
+            clearInterval(countdownInterval);
+            setIsLoginModalOpen(true);
+            navigate("/"); // Or wherever you want to redirect
+            return 0;
+          }
+          return prevTimer - 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(countdownInterval); // Cleanup
+  }, [successfullogout, navigate, setIsLoginModalOpen]);
   const handlelogoutclick = () => {
     localStorage.removeItem("access_token");
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       setSuccessfullogout(true);
+      setTimer(5);
     }, 500);
-
-    setTimeout(() => {
-      setIsLoginModalOpen(true);
-      console.log(isLoginModalOpen);
-      navigate("/");
-    }, 2000);
   };
 
   const handleOverlayClick = (e) => {
@@ -107,14 +123,18 @@ const Dashboard = () => {
       ) : (
         <div className="modal-overlay">
           <div
-            className="modal login-modal"
-            style={{ backgroundColor: "#fff!important", textAlign: "center" }}
+            className="modal"
+            style={{
+              backgroundColor: "#fff!important",
+              textAlign: "center",
+              width: "500px",
+            }}
           >
-            <h1>Logged out successfully</h1>
+            <h2>Logged out successfully</h2>
             <br />
             <div>
-              <h3>
-                Redirecting to Login page{" "}
+              <h3 style={{ color: "green" }}>
+                Redirecting to Login page in {timer}{" "}
                 <img
                   src={loading_gif}
                   alt=""

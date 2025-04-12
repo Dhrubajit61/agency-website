@@ -102,7 +102,7 @@ const Login = () => {
         localStorage.setItem("access_token", response1[0].data.token); // Save token
         // Redirect user, e.g.:
         setTimeout(() => {
-          // navigate("/Dashboard");
+          navigate("/Dashboard");
         }, 2000);
       } else {
         setResponse(response1[0].data.message);
