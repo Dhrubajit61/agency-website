@@ -7,6 +7,21 @@ import "../../assets/css/Modal.css";
 import { useContext } from "react";
 import { OpenLoginModalContext } from "../Home/Contextapi";
 import loading_gif from "../../assets/files/loading_gif.gif";
+import logo from "../../assets/files/logo.svg";
+import profileicon from "../../assets/files/57.webp";
+import "../../assets/css/Dashboard.css";
+//import react icons for menu
+import { FaHome } from "react-icons/fa";
+import { MdAddTask } from "react-icons/md";
+import { MdOutlinePendingActions } from "react-icons/md";
+import { IoChatbubblesSharp } from "react-icons/io5";
+import { IoMdNotifications } from "react-icons/io";
+import { MdManageAccounts } from "react-icons/md";
+import { FaMoneyCheck } from "react-icons/fa";
+import { BiSupport } from "react-icons/bi";
+
+//rect logout icon
+import { LuLogOut } from "react-icons/lu";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -115,10 +130,74 @@ const Dashboard = () => {
       </div>
       {successfullogout == false ? (
         <div>
-          <h1>Dashboard</h1>
-          <p>Welcome to your dashboard! You are authenticated.</p>
-
-          <button onClick={handlelogoutclick}>Logout here</button>
+          <div className="">
+            <div className="Dashboard-nav">
+              <div>
+                <img src={logo} alt="" />
+              </div>
+              <div className="dashboard-nav-right-icon">
+                <img src={profileicon} alt="" />
+                <LuLogOut
+                  size={25}
+                  style={{ cursor: "pointer", marginLeft: "5px" }}
+                  onClick={handlelogoutclick}
+                />
+              </div>
+            </div>
+            <div className="Dashboard-section">
+              <div className="Dasboard-menu">
+                <div className="Dashboard-heading">
+                  <h3>Dashboard Menu</h3>
+                </div>
+                <div className="Dashboard-menu-list">
+                  <ul>
+                    <li>
+                      <FaHome size={25} />
+                      <a href="">Dashboard</a>
+                    </li>
+                    <li>
+                      <MdAddTask size={25} />
+                      <a href="">New Project</a>
+                    </li>
+                    <li>
+                      <MdOutlinePendingActions size={25} />
+                      <a href="">My Projects</a>
+                    </li>
+                    <li>
+                      <IoChatbubblesSharp size={25} />
+                      <a href="">Message</a>
+                    </li>
+                    <li>
+                      <IoMdNotifications size={25} />
+                      <a href="">Notifications</a>
+                    </li>
+                    <li>
+                      <MdManageAccounts size={25} />
+                      <a href="">My Account</a>
+                    </li>
+                    <li>
+                      <FaMoneyCheck size={25} />
+                      <a href="">Billing & Payments</a>
+                    </li>
+                    <li>
+                      <BiSupport size={25} />
+                      <a href="">Support</a>
+                    </li>
+                    <li
+                      onClick={handlelogoutclick}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <LuLogOut size={25} />
+                      <a href={handlelogoutclick}>Logout</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="Dashboard-info">
+                <h1>Hi this is dashboard info</h1>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="modal-overlay">
