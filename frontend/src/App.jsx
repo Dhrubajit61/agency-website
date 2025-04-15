@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Dashboard from "./components/Client_dashboard/Dashboard";
 import Login from "./components/Home/Login";
 import IsLoginModalOpenprovider from "./components/Contexapiproviders/IsLoginModalOpenprovider";
+import { UserContextProvider } from "./Components/Contexapiproviders/UserContexProvider";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -26,11 +27,13 @@ function App() {
         <>
           <BrowserRouter>
             <IsLoginModalOpenprovider>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/dashboard/*" element={<Dashboard />} />
-                <Route path="/login" element={<Login />} />
-              </Routes>
+              <UserContextProvider>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/dashboard/*" element={<Dashboard />} />
+                  <Route path="/login" element={<Login />} />
+                </Routes>
+              </UserContextProvider>
             </IsLoginModalOpenprovider>
           </BrowserRouter>
         </>

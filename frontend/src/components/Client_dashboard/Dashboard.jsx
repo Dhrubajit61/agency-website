@@ -23,6 +23,12 @@ import { BiSupport } from "react-icons/bi";
 //rect logout icon
 import { LuLogOut } from "react-icons/lu";
 
+//import user context
+import { Usercontext } from "../Home/Contextapi";
+
+//import DashboardHome component
+import DashboardHome from "./Dashboardhome";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const apiUrl = "http://127.0.0.1:8000";
@@ -33,6 +39,7 @@ const Dashboard = () => {
 
   const [successfullogout, setSuccessfullogout] = useState(false);
   const [timer, setTimer] = useState(5);
+  const { user, setUser } = useContext(Usercontext);
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("access_token"); // ⚠️ For now using localStorage
@@ -50,7 +57,8 @@ const Dashboard = () => {
           },
         });
 
-        console.log("User info:", response.data);
+        console.log("User info1:", response.data);
+        setUser(response.data);
 
         if (!response.data.valid) {
           setIsLoginModalOpen(true);
@@ -85,6 +93,7 @@ const Dashboard = () => {
     return () => clearInterval(countdownInterval); // Cleanup
   }, [successfullogout, navigate, setIsLoginModalOpen]);
   const handlelogoutclick = () => {
+    setUser(null);
     localStorage.removeItem("access_token");
     setLoading(true);
     setTimeout(() => {
@@ -188,13 +197,13 @@ const Dashboard = () => {
                       style={{ cursor: "pointer" }}
                     >
                       <LuLogOut size={25} />
-                      <a href={handlelogoutclick}>Logout</a>
+                      <a>Logout</a>
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="Dashboard-info">
-                <h1>Hi this is dashboard info</h1>
+                <DashboardHome></DashboardHome>
               </div>
             </div>
           </div>

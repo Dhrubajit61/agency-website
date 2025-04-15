@@ -48,7 +48,7 @@ const Footer = () => {
           <div className="part-item">
             <ul>
               <li>+003894372632</li>
-              <li>helldesigner@gmail.ccom</li>
+              <li>helldesigner@sgmail.com</li>
               <li>Uniteds state of America</li>
             </ul>
           </div>
