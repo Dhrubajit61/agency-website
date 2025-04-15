@@ -1,3 +1,46 @@
 .Dashboard-info{
     padding: 15px;
 }
+.Dashboard-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:5px;
+}
+.Dashboard-card-elements{
+    height:80px;
+    /* background-color: rgb(111, 246, 161); */
+    
+    width:calc(50% - 30px);
+    padding: 5px;
+    gap:5px;
+}
+.Dashboard-card-elements:nth-of-type(1){
+ /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=ed1237&c2=fc5e4c&gt=l&gd=dtl
+*/
+background: #ea4661;
+background: linear-gradient(135deg, #ED1237, #FC5E4C);
+}
+.Dashboard-card-elements:nth-of-type(2){
+    background: #2A7B9B;
+background: linear-gradient(-90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 78%, rgba(207, 194, 78, 1) 100%);
+}
+.Dashboard-card-elements:nth-of-type(3){
+    background-color: rgb(217, 57, 169);
+}
+.Dashboard-card-elements:nth-of-type(4){
+    background-color: rgb(88, 62, 235);
+}
+
+.Dashboard-card-elements p{
+    color:rgb(23, 27, 41)!important;
+}
+.Dashboard-card-elements-div{
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+}
