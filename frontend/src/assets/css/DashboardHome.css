@@ -5,6 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     gap:5px;
+    font-family: math;
 }
 .Dashboard-card-elements{
     height:80px;
@@ -13,24 +14,20 @@
     width:calc(50% - 30px);
     padding: 5px;
     gap:5px;
+    border-radius: 10px;
 }
 .Dashboard-card-elements:nth-of-type(1){
- /*
-* Created with https://www.css-gradient.com
-* Gradient link: https://www.css-gradient.com/?c1=ed1237&c2=fc5e4c&gt=l&gd=dtl
-*/
-background: #ea4661;
-background: linear-gradient(135deg, #ED1237, #FC5E4C);
+
+background: #f5b9c3;
 }
 .Dashboard-card-elements:nth-of-type(2){
-    background: #2A7B9B;
-background: linear-gradient(-90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 78%, rgba(207, 194, 78, 1) 100%);
+    background: #cdeffd;;
 }
 .Dashboard-card-elements:nth-of-type(3){
-    background-color: rgb(217, 57, 169);
+    background-color: rgb(237 245 173);
 }
 .Dashboard-card-elements:nth-of-type(4){
-    background-color: rgb(88, 62, 235);
+    background-color: rgb(167 249 177);
 }
 
 .Dashboard-card-elements p{
@@ -43,4 +40,21 @@ background: linear-gradient(-90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133,
     justify-content: space-around;
     width: 100%;
     text-align: center;
+}
+.Dashboard-card-number{
+    width: 10%;
+    margin: auto;
+    border-radius: 10px;
+}
+.n1{
+    background: #f37e72db;
+}
+.n2{
+    background: hsla(163, 62%, 60%, 0.859)!important;
+}
+.n3{
+    background-color: #b8cf36db!important;
+}
+.n4{
+    background-color: #526bd0db!important;
 }

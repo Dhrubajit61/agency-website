@@ -175,6 +175,7 @@ const Dashboard = () => {
                     <li>
                       <IoChatbubblesSharp size={25} />
                       <a href="">Message</a>
+                      <span style={{ color: "red" }}>(2)</span>
                     </li>
                     <li>
                       <IoMdNotifications size={25} />
