@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import Dashboard from "./components/Client_dashboard/Dashboard";
 import Login from "./components/Home/Login";
 import IsLoginModalOpenprovider from "./components/Contexapiproviders/IsLoginModalOpenprovider";
-import { UserContextProvider } from "./Components/Contexapiproviders/UserContexProvider";
+import { UserContextProvider } from "./components/Contexapiproviders/UserContexProvider";
 
 function App() {
   const [loading, setLoading] = useState(true);

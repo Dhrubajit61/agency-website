@@ -18,7 +18,8 @@ import Login from "./Login";
 import Modal2 from "./Modal2";
 //Signup and login modal end
 
-//import useContex
+//import userContex
+import { Usercontext } from "./Contextapi";
 
 const Navbar = () => {
   const [response, setResponse] = useState([]);
@@ -36,6 +37,27 @@ const Navbar = () => {
   const opennavmenu = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  //usercontext
+  const { user, setUser } = useContext(Usercontext);
+
+  //fetch user if token exist
+  useEffect(() => {
+    const token = localStorage.getItem("access_token");
+    if (token && !user) {
+      axios
+        .get("http://127.0.0.1:8000/api/user-info", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err) => {
+          console.log("Token invalid or expired");
+        });
+    }
+  }, []);
+
   useEffect(() => {
     console.log(isNavOpen);
   }, [isNavOpen]);
@@ -65,6 +87,7 @@ const Navbar = () => {
 
   useEffect(() => {
     console.log(isModalOpen2);
+
     // Handle scroll event
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
@@ -226,19 +249,27 @@ const Navbar = () => {
                 Contact US
               </Link>
             </li>
-            <li>
-              <Link
-                to="/"
-                className={
-                  activeSection === "contact-us"
-                    ? "sign-up-class active"
-                    : "sign-up-class"
-                }
-                onClick={handleOpenModal}
-              >
-                Client Sign up /Login
-              </Link>
-            </li>
+
+            {user == null ? (
+              <li>
+                {" "}
+                <Link
+                  to="/"
+                  className={
+                    activeSection === "contact-us"
+                      ? "sign-up-class active"
+                      : "sign-up-class"
+                  }
+                  onClick={handleOpenModal}
+                >
+                  Client Sign up /Login{" "}
+                </Link>
+              </li>
+            ) : (
+              <li>
+                <Link to={"/Dashboard"}>Go to Dashboard</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

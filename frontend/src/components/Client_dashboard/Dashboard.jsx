@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Preloader2 from "../Home/Preloader2";
 import "../../assets/css/login.css";
@@ -41,6 +41,9 @@ const Dashboard = () => {
   const [timer, setTimer] = useState(5);
   const { user, setUser } = useContext(Usercontext);
   useEffect(() => {
+    console.log("Dashboard saw user change:", user);
+  }, [user]);
+  useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("access_token"); // ⚠️ For now using localStorage
 
@@ -57,7 +60,7 @@ const Dashboard = () => {
           },
         });
 
-        console.log("User info1:", response.data);
+        // console.log("User info1:", response.data);
         setUser(response.data);
 
         if (!response.data.valid) {
@@ -142,7 +145,9 @@ const Dashboard = () => {
           <div className="">
             <div className="Dashboard-nav">
               <div>
-                <img src={logo} alt="" />
+                <Link to="/">
+                  <img src={logo} alt="" />
+                </Link>
               </div>
               <div className="dashboard-nav-right-icon">
                 <img src={profileicon} alt="" />

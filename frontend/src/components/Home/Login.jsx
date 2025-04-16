@@ -101,6 +101,7 @@ const Login = () => {
         console.log(response1);
         localStorage.setItem("access_token", response1[0].data.token); // Save token
         // Redirect user, e.g.:
+        setIsLoginModalOpen(false);
         setTimeout(() => {
           navigate("/Dashboard");
         }, 2000);
