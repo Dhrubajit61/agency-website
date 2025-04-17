@@ -1,3 +1,9 @@
+.Dashboard-parent{
+    height: 100vh;
+}
+.Dashboard-info{
+    overflow-y: auto;
+}
 .Dashboard-nav{
     display:flex;
     justify-content: space-between;

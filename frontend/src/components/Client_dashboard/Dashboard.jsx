@@ -29,6 +29,8 @@ import { Usercontext } from "../Home/Contextapi";
 //import DashboardHome component
 import DashboardHome from "./Dashboardhome";
 
+import NewProject from "./NewProject";
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const apiUrl = "http://127.0.0.1:8000";
@@ -43,6 +45,11 @@ const Dashboard = () => {
   useEffect(() => {
     console.log("Dashboard saw user change:", user);
   }, [user]);
+  const [section, setSection] = useState("DashboardHome");
+  const handleclickme = (v) => {
+    setSection(v);
+  };
+
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("access_token"); // ⚠️ For now using localStorage
@@ -142,7 +149,7 @@ const Dashboard = () => {
       </div>
       {successfullogout == false ? (
         <div>
-          <div className="">
+          <div className="Dashboard-parent">
             <div className="Dashboard-nav">
               <div>
                 <Link to="/">
@@ -165,38 +172,44 @@ const Dashboard = () => {
                 </div>
                 <div className="Dashboard-menu-list">
                   <ul>
-                    <li>
+                    <li
+                      onClick={() => handleclickme("DashboardHome")}
+                      style={{ cursor: "pointer" }}
+                    >
                       <FaHome size={25} />
-                      <a href="">Dashboard</a>
+                      <a>Dashboard</a>
                     </li>
-                    <li>
+                    <li
+                      onClick={() => handleclickme("NewProfileClick")}
+                      style={{ cursor: "pointer" }}
+                    >
                       <MdAddTask size={25} />
-                      <a href="">New Project</a>
+                      <a>New Project</a>
                     </li>
                     <li>
                       <MdOutlinePendingActions size={25} />
-                      <a href="">My Projects</a>
+                      <a>My Projects</a>
                     </li>
                     <li>
                       <IoChatbubblesSharp size={25} />
-                      <a href="">Message</a>
+                      <a>Message</a>
                       <span style={{ color: "red" }}>(2)</span>
                     </li>
                     <li>
                       <IoMdNotifications size={25} />
-                      <a href="">Notifications</a>
+                      <a>Notifications</a>
                     </li>
                     <li>
                       <MdManageAccounts size={25} />
-                      <a href="">My Account</a>
+                      <a>My Account</a>
                     </li>
                     <li>
                       <FaMoneyCheck size={25} />
-                      <a href="">Billing & Payments</a>
+                      <a>Billing & Payments</a>
                     </li>
                     <li>
                       <BiSupport size={25} />
-                      <a href="">Support</a>
+                      <a>Support</a>
                     </li>
                     <li
                       onClick={handlelogoutclick}
@@ -209,7 +222,16 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="Dashboard-info">
-                <DashboardHome></DashboardHome>
+                {section == "DashboardHome" ? (
+                  <DashboardHome></DashboardHome>
+                ) : (
+                  <></>
+                )}
+                {section == "NewProfileClick" ? (
+                  <NewProject></NewProject>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
           </div>
