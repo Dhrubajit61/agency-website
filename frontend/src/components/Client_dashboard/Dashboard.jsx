@@ -29,7 +29,7 @@ import { Usercontext } from "../Home/Contextapi";
 //import DashboardHome component
 import DashboardHome from "./Dashboardhome";
 
-import NewProject from "./NewProject";
+import NewProject from "./NewProject2";
 
 const Dashboard = () => {
   const navigate = useNavigate();

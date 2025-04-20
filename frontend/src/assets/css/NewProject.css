@@ -10,10 +10,13 @@
     height: 100px;
     resize: none;
 }
-.NewProjectForm select,textarea,input {
-    background-color: #d6ffd51f; /* default background */
+.NewProjectForm label{
+    font-weight: 500;
+}
+/* .NewProjectForm select,textarea,input {
+    background-color: #d6ffd51f; 
   }
-  
+   */
   .businesscategory select:focus {
     background-color: #fff8dc; /* light yellow when selecting */
     outline: none; /* optional: remove default blue outline */

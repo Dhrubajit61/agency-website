@@ -7,6 +7,8 @@ use App\Http\Controllers\user_accounts;
 use App\Http\Controllers\LoginController;
 use Laravel\Passport\Passport;
 use App\Http\Controllers\UserInfoController;
+use App\Http\Controllers\ProjectRequirementController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -42,5 +44,8 @@ Route::get('/check-token', function () {
 Route::middleware('auth:api')->get('/user-info', function (Request $request) {
     return response()->json(['valid' => true, 'user' => $request->user()]);
 });
+
+ Route::middleware('auth:api')->post('/submit-requirement', [ProjectRequirementController::class, 'store']);
+// Route::post('/submit-requirement', [ProjectRequirementController::class, 'store']);
 
 

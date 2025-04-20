@@ -7,7 +7,9 @@ import Dashboard from "./components/Client_dashboard/Dashboard";
 import Login from "./components/Home/Login";
 import IsLoginModalOpenprovider from "./components/Contexapiproviders/IsLoginModalOpenprovider";
 import { UserContextProvider } from "./components/Contexapiproviders/UserContexProvider";
-
+import { Responsecontexprovider } from "./components/Contexapiproviders/Responsecontexprovider";
+import { Openmodal2context } from "./components/Home/Contextapi";
+import Openmodal2contextprovider from "./components/Contexapiproviders/Openmodal2contextprovider";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -28,11 +30,15 @@ function App() {
           <BrowserRouter>
             <IsLoginModalOpenprovider>
               <UserContextProvider>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/dashboard/*" element={<Dashboard />} />
-                  <Route path="/login" element={<Login />} />
-                </Routes>
+                <Responsecontexprovider>
+                  <Openmodal2contextprovider>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/dashboard/*" element={<Dashboard />} />
+                      <Route path="/login" element={<Login />} />
+                    </Routes>
+                  </Openmodal2contextprovider>
+                </Responsecontexprovider>
               </UserContextProvider>
             </IsLoginModalOpenprovider>
           </BrowserRouter>
