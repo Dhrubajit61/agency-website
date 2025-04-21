@@ -15,10 +15,14 @@ return new class extends Migration
     {
         Schema::create('project_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('project_id'); // assumes relation to project_requests.id
             $table->string('file_path');
             $table->timestamps();
+        
+            // Foreign key pointing to custom project_requests table
+            $table->foreign('project_id')->references('id')->on('project_requests')->onDelete('cascade');
         });
+        
     }
     
 

@@ -71,7 +71,7 @@ const NewProject = () => {
           },
         }
       );
-      alert("Nice, Requirement submitted successfully1!");
+      //alert("Nice, Requirement submitted successfully1!");
       setResponse(response1);
 
       if (response1.request.status == "200") {

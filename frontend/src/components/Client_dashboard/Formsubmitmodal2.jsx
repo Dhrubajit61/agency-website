@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Responsecontext } from "../Home/Contextapi";
 import { Openmodalcontext } from "../Home/Contextapi";
 
-import checkmark from "../../assets/files/checkmark.png";
+import checkmark from "../../assets/files/checkmark2.gif";
 import { OpenLoginModalContext } from "../Home/Contextapi";
 import "../../assets/css/Modal2.css";
 import { GoDotFill } from "react-icons/go";
@@ -54,7 +54,13 @@ const Formsubmitmodal2 = () => {
               <div className="checkmark">
                 <img src={checkmark} alt="" />
                 <h4>Success</h4>
-                <p>New request form submitted successfulyy</p>
+                <p style={{ letterSpacing: "unset" }}>
+                  New request form submitted successfully with Project id{" "}
+                  <span>
+                    #P100
+                    {response.data.projectid}
+                  </span>
+                </p>
               </div>
             ) : (
               <div className="checkmark checkerror">

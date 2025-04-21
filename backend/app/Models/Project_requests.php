@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Project_requests extends Model
 {
     use HasFactory;
+    protected $table = 'project_requests'; // Specify the table name
     protected $fillable = [
+        'user_id',
         'title',
         'business_category',
         'development_type',

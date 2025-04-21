@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::create('projects', function (Blueprint $table) {
-        $table->id();
+    Schema::create('project_requests', function (Blueprint $table) {
+        $table->id(); // creates unsignedBigInteger
+        $table->unsignedBigInteger('user_id'); // foreign key column
         $table->string('title');
         $table->string('business_category');
         $table->text('development_type')->nullable();
@@ -25,7 +26,13 @@ return new class extends Migration
         $table->text('reference_links')->nullable();
         $table->text('notes')->nullable();
         $table->timestamps();
+    
+        // Foreign key pointing to custom users table
+        $table->foreign('user_id')->references('id')->on('user_accounts')->onDelete('cascade');
     });
+    
+    
+    
 }
     
 

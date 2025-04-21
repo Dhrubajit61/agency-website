@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project;
+use App\Models\Project_requests;
 use App\Models\ProjectFile;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProjectRequirementController extends Controller
 {
     public function store(Request $request)
 {
+    $user = Auth::user();
+    $userId = $user->id;
+ 
     $validated = $request->validate([
         'title' => 'required|string',
         'business_category' => 'required |string',
@@ -31,7 +36,8 @@ class ProjectRequirementController extends Controller
     }
 
     // Store the project data in DB if needed
-    $project = Project::create([
+    $project = Project_requests::create([
+        'user_id'=>$userId,
         'title' => $request->title,
         'business_category' => $request->business_category,
         'development_type' => json_encode($request->development_type),
@@ -53,7 +59,9 @@ class ProjectRequirementController extends Controller
         }
     }
 
-    return response()->json(['message' => 'Requirement submitted successfully'], 200);
+    return response()->json(['message' => 'Requirement submitted successfully', 
+        'projectid'=>$project->id,
+], 200);
 }
 
 }
