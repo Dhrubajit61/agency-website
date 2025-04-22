@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use Laravel\Passport\Passport;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\ProjectRequirementController;
+use App\Http\Controllers\userprojectscontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,8 @@ Route::middleware('auth:api')->get('/user-info', function (Request $request) {
 
  Route::middleware('auth:api')->post('/submit-requirement', [ProjectRequirementController::class, 'store']);
 // Route::post('/submit-requirement', [ProjectRequirementController::class, 'store']);
+
+//user project list
+Route::middleware('auth:api')->get('/myprojects', [userprojectscontroller::class, 'myprojects']);
 
 

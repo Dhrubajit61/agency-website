@@ -30,6 +30,7 @@ import { Usercontext } from "../Home/Contextapi";
 import DashboardHome from "./Dashboardhome";
 
 import NewProject from "./NewProject2";
+import MyProjects from "./Myprojects";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -148,94 +149,100 @@ const Dashboard = () => {
         )}
       </div>
       {successfullogout == false ? (
-        <div>
-          <div className="Dashboard-parent">
-            <div className="Dashboard-nav">
-              <div>
-                <Link to="/">
-                  <img src={logo} alt="" />
-                </Link>
-              </div>
-              <div className="dashboard-nav-right-icon">
-                <img src={profileicon} alt="" />
-                <LuLogOut
-                  size={25}
-                  style={{ cursor: "pointer", marginLeft: "5px" }}
-                  onClick={handlelogoutclick}
-                />
-              </div>
-            </div>
-            <div className="Dashboard-section">
-              <div className="Dasboard-menu">
-                <div className="Dashboard-heading">
-                  <h3>Dashboard Menu</h3>
+        user && (
+          <div>
+            <div className="Dashboard-parent">
+              <div className="Dashboard-nav">
+                <div>
+                  <Link to="/">
+                    <img src={logo} alt="" />
+                  </Link>
                 </div>
-                <div className="Dashboard-menu-list">
-                  <ul>
-                    <li
-                      onClick={() => handleclickme("DashboardHome")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <FaHome size={25} />
-                      <a>Dashboard</a>
-                    </li>
-                    <li
-                      onClick={() => handleclickme("NewProfileClick")}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <MdAddTask size={25} />
-                      <a>New Project</a>
-                    </li>
-                    <li>
-                      <MdOutlinePendingActions size={25} />
-                      <a>My Projects</a>
-                    </li>
-                    <li>
-                      <IoChatbubblesSharp size={25} />
-                      <a>Message</a>
-                      <span style={{ color: "red" }}>(2)</span>
-                    </li>
-                    <li>
-                      <IoMdNotifications size={25} />
-                      <a>Notifications</a>
-                    </li>
-                    <li>
-                      <MdManageAccounts size={25} />
-                      <a>My Account</a>
-                    </li>
-                    <li>
-                      <FaMoneyCheck size={25} />
-                      <a>Billing & Payments</a>
-                    </li>
-                    <li>
-                      <BiSupport size={25} />
-                      <a>Support</a>
-                    </li>
-                    <li
-                      onClick={handlelogoutclick}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <LuLogOut size={25} />
-                      <a>Logout</a>
-                    </li>
-                  </ul>
+                <div className="dashboard-nav-right-icon">
+                  <img src={profileicon} alt="" />
+                  <LuLogOut
+                    size={25}
+                    style={{ cursor: "pointer", marginLeft: "5px" }}
+                    onClick={handlelogoutclick}
+                  />
                 </div>
               </div>
-              <div className="Dashboard-info">
-                {section == "DashboardHome" ? (
-                  <DashboardHome></DashboardHome>
-                ) : (
-                  <></>
-                )}
-                {section == "NewProfileClick" ? (
-                  <NewProject></NewProject>
-                ) : (
-                  <></>
-                )}
+              <div className="Dashboard-section">
+                <div className="Dasboard-menu">
+                  <div className="Dashboard-heading">
+                    <h3>Dashboard Menu</h3>
+                  </div>
+                  <div className="Dashboard-menu-list">
+                    <ul>
+                      <li
+                        onClick={() => handleclickme("DashboardHome")}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <FaHome size={25} />
+                        <a>Dashboard</a>
+                      </li>
+                      <li
+                        onClick={() => handleclickme("NewProjecteClick")}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <MdAddTask size={25} />
+                        <a>New Project</a>
+                      </li>
+                      <li
+                        onClick={() => handleclickme("myprojects")}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <MdOutlinePendingActions size={25} />
+                        <a>My Projects</a>
+                      </li>
+                      <li>
+                        <IoChatbubblesSharp size={25} />
+                        <a>Message</a>
+                        <span style={{ color: "red" }}>(2)</span>
+                      </li>
+                      <li>
+                        <IoMdNotifications size={25} />
+                        <a>Notifications</a>
+                      </li>
+                      <li>
+                        <MdManageAccounts size={25} />
+                        <a>My Account</a>
+                      </li>
+                      <li>
+                        <FaMoneyCheck size={25} />
+                        <a>Billing & Payments</a>
+                      </li>
+                      <li>
+                        <BiSupport size={25} />
+                        <a>Support</a>
+                      </li>
+                      <li
+                        onClick={handlelogoutclick}
+                        style={{ cursor: "pointer" }}
+                      >
+                        <LuLogOut size={25} />
+                        <a>Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="Dashboard-info">
+                  {section == "DashboardHome" ? (
+                    <DashboardHome></DashboardHome>
+                  ) : (
+                    <></>
+                  )}
+                  {section == "NewProjecteClick" ? (
+                    <NewProject></NewProject>
+                  ) : (
+                    <></>
+                  )}
+                  {section == "myprojects" ? <MyProjects></MyProjects> : <></>}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )
       ) : (
         <div className="modal-overlay">
           <div

@@ -1,0 +1,49 @@
+.projects-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .projects-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .no-projects {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  .projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  .projects-table th,
+  .projects-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  
+  .projects-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .projects-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+  
+  .projects-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
