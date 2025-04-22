@@ -1,3 +1,4 @@
 *
 !public/
+!project_uploads/
 !.gitignore
