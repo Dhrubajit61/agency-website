@@ -277,17 +277,13 @@ const Navbar = () => {
       <Openmodalcontext.Provider
         value={{ isSignupModalOpen, setIsSignupModalOpen }}
       >
-        <OpenLoginModalContext.Provider
-          value={{ isLoginModalOpen, setIsLoginModalOpen }}
-        >
-          <Openmodal2context.Provider value={{ isModalOpen2, setIsModalOpen2 }}>
-            <Responsecontext.Provider value={{ response, setResponse }}>
-              {isSignupModalOpen && <Signup></Signup>}
-              {isLoginModalOpen && <Login></Login>}
-              {isModalOpen2 && <Modal2></Modal2>}
-            </Responsecontext.Provider>
-          </Openmodal2context.Provider>
-        </OpenLoginModalContext.Provider>
+        <Openmodal2context.Provider value={{ isModalOpen2, setIsModalOpen2 }}>
+          <Responsecontext.Provider value={{ response, setResponse }}>
+            {isSignupModalOpen && <Signup></Signup>}
+            {isLoginModalOpen && <Login></Login>}
+            {isModalOpen2 && <Modal2></Modal2>}
+          </Responsecontext.Provider>
+        </Openmodal2context.Provider>
       </Openmodalcontext.Provider>
     </>
   );
