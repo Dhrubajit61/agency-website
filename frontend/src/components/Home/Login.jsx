@@ -1,5 +1,5 @@
 import { countries } from "../../assets/Countrylist";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import axios from "axios";
 import "../../assets/css/login.css";
@@ -96,13 +96,15 @@ const Login = () => {
         //   password: "",
         // });
         // alert("Login successful!");
+
         setLoginsuccess(true);
 
         console.log(response1);
         localStorage.setItem("access_token", response1[0].data.token); // Save token
         // Redirect user, e.g.:
-        setIsLoginModalOpen(false);
+
         setTimeout(() => {
+          setIsLoginModalOpen(false);
           navigate("/Dashboard");
         }, 2000);
       } else {
@@ -117,6 +119,7 @@ const Login = () => {
       setLoading(false); // Stop loader after both API call and delay
     }
   };
+
   return (
     <>
       <div className="modal-overlay" onClick={handleOverlayClick}>
