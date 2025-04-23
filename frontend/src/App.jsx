@@ -10,6 +10,7 @@ import { UserContextProvider } from "./components/Contexapiproviders/UserContexP
 import { Responsecontexprovider } from "./components/Contexapiproviders/Responsecontexprovider";
 import { Openmodal2context } from "./components/Home/Contextapi";
 import Openmodal2contextprovider from "./components/Contexapiproviders/Openmodal2contextprovider";
+import Messagecontextprovider from "./components/Contexapiproviders/Messagecontexprovider";
 function App() {
   const [loading, setLoading] = useState(true);
 
@@ -32,11 +33,13 @@ function App() {
               <UserContextProvider>
                 <Responsecontexprovider>
                   <Openmodal2contextprovider>
-                    <Routes>
-                      <Route path="/" element={<Home />} />
-                      <Route path="/dashboard/*" element={<Dashboard />} />
-                      <Route path="/login" element={<Login />} />
-                    </Routes>
+                    <Messagecontextprovider>
+                      <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/dashboard/*" element={<Dashboard />} />
+                        <Route path="/login" element={<Login />} />
+                      </Routes>
+                    </Messagecontextprovider>
                   </Openmodal2contextprovider>
                 </Responsecontexprovider>
               </UserContextProvider>

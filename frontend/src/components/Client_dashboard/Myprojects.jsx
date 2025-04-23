@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../assets/css/Myprojects.css"; // ⬅️ Custom CSS file
 import loading_gif from "../../assets/files/loading_gif.gif";
+import { OpenLoginModalContext } from "../Home/Contextapi";
+import { Messagecontext } from "../Home/Contextapi";
 
 const MyProjects = () => {
+  const { message, setMessage } = useContext(Messagecontext);
+  const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
+    OpenLoginModalContext
+  );
   const [projects, setProjects] = useState([
     {
       id: -1,
@@ -18,6 +24,8 @@ const MyProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       if (!token) {
+        setIsLoginModalOpen(true);
+        setMessage("You have been logged out");
         navigate("/");
         return;
       }
@@ -37,7 +45,9 @@ const MyProjects = () => {
         setProjects(projectData);
       } catch (error) {
         console.error("Error fetching projects:", error);
-        navigate("/login");
+        setIsLoginModalOpen(true);
+        setMessage("You have been logged out");
+        navigate("/");
       }
     };
 

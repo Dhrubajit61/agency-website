@@ -12,12 +12,13 @@ import { Responsecontext } from "./Contextapi";
 import { Openmodal2context } from "./Contextapi";
 import { useNavigate } from "react-router-dom";
 import loading_gif from "../../assets/files/loading_gif.gif";
-
+import { Messagecontext } from "./Contextapi";
 const Login = () => {
   const apiUrl = "http://127.0.0.1:8000";
   const { isLoginModalOpen, setIsLoginModalOpen } = useContext(
     OpenLoginModalContext
   ); // Use context to get the value
+  const { message, setMessage } = useContext(Messagecontext);
   const { response, setResponse } = useContext(Responsecontext);
   const [loginsuccess, setLoginsuccess] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
@@ -98,6 +99,7 @@ const Login = () => {
         // alert("Login successful!");
 
         setLoginsuccess(true);
+        setMessage("");
 
         console.log(response1);
         localStorage.setItem("access_token", response1[0].data.token); // Save token
@@ -127,6 +129,8 @@ const Login = () => {
           <button className="close-button" onClick={handleCloseModal}>
             &times;
           </button>
+          <p style={{ textAlign: "center", color: "red" }}>{message}</p>
+
           <h2>Login here</h2>
           <div style={{ position: "relative" }}>
             {loading && (
