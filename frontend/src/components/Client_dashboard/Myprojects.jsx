@@ -2,9 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../assets/css/Myprojects.css"; // ⬅️ Custom CSS file
+import loading_gif from "../../assets/files/loading_gif.gif";
 
 const MyProjects = () => {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([
+    {
+      id: -1,
+      development_type: [null],
+    },
+  ]);
   const apiUrl = "http://127.0.0.1:8000";
   const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
@@ -38,6 +44,10 @@ const MyProjects = () => {
     fetchProjects();
   }, []);
 
+  useEffect(() => {
+    console.log(projects);
+  }, [projects]);
+
   const parseDevelopmentType = (devType) => {
     try {
       const parsed = JSON.parse(devType);
@@ -57,8 +67,13 @@ const MyProjects = () => {
   return (
     <div className="projects-container">
       <h2 className="projects-title">My Projects</h2>
-      {projects.length === 0 ? (
-        <p className="no-projects">No projects found.</p>
+      {projects.length == 0 ? (
+        <p className="no-projects">Sorry no project found</p>
+      ) : projects[0].id == -1 ? (
+        <div className="no-projects">
+          <p>Fetching projects wait... </p>
+          <img src={loading_gif} alt="" />
+        </div>
       ) : (
         <div className="table-wrapper">
           <table className="projects-table">
