@@ -41,6 +41,11 @@ const Formsubmitmodal2 = () => {
   };
   console.log("This is ");
   console.log(response);
+  if (response.data) {
+    console.log(response.data);
+  } else {
+    console.log(response.response.data);
+  }
   return (
     <>
       <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -66,7 +71,19 @@ const Formsubmitmodal2 = () => {
               <div className="checkmark checkerror">
                 {/* {response &&
                   response.map((error, index) => <p key={index}>* {error}</p>)} */}
-                {response && <p>Please Enter correct Data</p>}
+                {/* {response && <p>Please Enter correct Data</p>} */}
+
+                {response.status === 422 ? (
+                  <>
+                    {Object.values(response.response.data.errors)
+                      .flat()
+                      .map((error, index) => (
+                        <p key={index}>* {error}</p>
+                      ))}
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             )}
           </h1>

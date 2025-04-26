@@ -79,6 +79,7 @@ const NewProject = () => {
       }
     } catch (error) {
       setResponse(error);
+      setOpenmodal2context(true);
       console.error(error);
       //if(error.response.data.message)
       alert("Failed to submit requirement.");
