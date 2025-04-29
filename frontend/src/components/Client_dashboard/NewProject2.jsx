@@ -90,7 +90,7 @@ const NewProject = () => {
     <>
       <div
         className="NewProjectdiv"
-        style={{ width: "70%", marginInline: "auto" }}
+        style={{ width: "95%", marginInline: "auto" }}
       >
         <div className="NewProjectHeading" style={{ textAlign: "center" }}>
           <h1>Request for New Project</h1>

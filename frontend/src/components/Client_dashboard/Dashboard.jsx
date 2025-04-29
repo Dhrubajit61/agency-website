@@ -27,7 +27,7 @@ import { LuLogOut } from "react-icons/lu";
 import { Usercontext } from "../Home/Contextapi";
 
 //import DashboardHome component
-import DashboardHome from "./Dashboardhome";
+import DashboardHome from "./DashboardHome";
 
 import NewProject from "./NewProject2";
 import MyProjects from "./Myprojects";

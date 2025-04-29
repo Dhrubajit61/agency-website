@@ -89,6 +89,7 @@ const MyProjects = () => {
           <table className="projects-table">
             <thead>
               <tr>
+                <th>Project ID</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Description</th>
@@ -99,6 +100,7 @@ const MyProjects = () => {
             <tbody>
               {projects.map((project) => (
                 <tr key={project.id}>
+                  <td>100{project.id}</td>
                   <td>{project.title}</td>
                   <td>{project.business_category}</td>
                   <td>{project.description}</td>

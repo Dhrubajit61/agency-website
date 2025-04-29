@@ -36,3 +36,10 @@
     flex-direction: column;
     gap:5px;
 }
+.NewProjectdiv{
+    background: #e7e7e7;
+}
+
+.NewProjectForm{
+    padding: 15px;
+}
