@@ -6,14 +6,12 @@ A full-stack web application built with **React.js (Vite)** for the frontend and
 
 ## 📁 Project Structure
 
-
-**Developer Info
+\*\*Developer Info
 This project is Created by Dhrubajit Das
 Design inspired by multiple website
 coding is fully unique and Developed by Dhrubajit Das
 
-
-**Requirements
+\*\*Requirements
 
 ---
 
@@ -65,6 +63,7 @@ DB_DATABASE=your_db
 DB_USERNAME=your_user
 DB_PASSWORD=your_password
 
-VITE_API_BASE_URL=http://localhost:8000/api
+VITE_API_URL=http://127.0.0.1:8000
 
 
+```
