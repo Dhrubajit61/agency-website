@@ -16,10 +16,10 @@ const DashboardHome = () => {
   const [loading, setLoading] = useState(true);
   const { response, setResponse } = useContext(Responsecontext);
   const [projects, setProjects] = useState([
-    {
-      id: -1,
-      development_type: [null],
-    },
+    // {
+    //   id: -1,
+    //   development_type: [null],
+    // },
   ]);
   const apiUrl = "http://127.0.0.1:8000";
   const token = localStorage.getItem("access_token");

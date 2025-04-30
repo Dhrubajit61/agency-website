@@ -9,6 +9,7 @@ use Laravel\Passport\Passport;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\ProjectRequirementController;
 use App\Http\Controllers\userprojectscontroller;
+use App\Http\Controllers\ChangeUserDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,5 @@ Route::middleware('auth:api')->get('/user-info', function (Request $request) {
 
 //user project list
 Route::middleware('auth:api')->get('/myprojects', [userprojectscontroller::class, 'myprojects']);
-
+Route::middleware('auth:api')->post('/changeuserdetails',[ChangeUserDetailsController::class,'changedetails']);
 

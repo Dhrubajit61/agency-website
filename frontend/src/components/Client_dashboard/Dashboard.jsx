@@ -31,6 +31,7 @@ import DashboardHome from "./DashboardHome";
 
 import NewProject from "./NewProject2";
 import MyProjects from "./Myprojects";
+import Myaccount from "./Myaccount";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -189,7 +190,7 @@ const Dashboard = () => {
                         <a>New Project</a>
                       </li>
                       <li
-                        onClick={() => handleclickme("myprojects")}
+                        onClick={() => handleclickme("Myprojects")}
                         style={{ cursor: "pointer" }}
                       >
                         <MdOutlinePendingActions size={25} />
@@ -204,7 +205,10 @@ const Dashboard = () => {
                         <IoMdNotifications size={25} />
                         <a>Notifications</a>
                       </li>
-                      <li>
+                      <li
+                        onClick={() => handleclickme("Myaccount")}
+                        style={{ cursor: "pointer" }}
+                      >
                         <MdManageAccounts size={25} />
                         <a>My Account</a>
                       </li>
@@ -237,7 +241,8 @@ const Dashboard = () => {
                   ) : (
                     <></>
                   )}
-                  {section == "myprojects" ? <MyProjects></MyProjects> : <></>}
+                  {section == "Myprojects" ? <MyProjects></MyProjects> : <></>}
+                  {section == "Myaccount" ? <Myaccount></Myaccount> : <></>}
                 </div>
               </div>
             </div>

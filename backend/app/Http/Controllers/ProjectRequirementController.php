@@ -83,6 +83,7 @@ $project = Project_requests::create([
     'timeline' => $request->timeline,
     'reference_links' => $request->reference_links,
     'notes' => $request->notes,
+    'status'=>"pending",
 ]);
 
 if ($request->hasFile('project_files')) {

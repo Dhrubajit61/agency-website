@@ -95,6 +95,7 @@ const MyProjects = () => {
                 <th>Description</th>
                 <th>Development Types</th>
                 <th>Created At</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -106,6 +107,7 @@ const MyProjects = () => {
                   <td>{project.description}</td>
                   <td>{project.development_type.join(", ")}</td>
                   <td>{new Date(project.created_at).toLocaleString()}</td>
+                  <td>{project.status}</td>
                 </tr>
               ))}
             </tbody>
