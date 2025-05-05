@@ -101,13 +101,35 @@ const MyProjects = () => {
             <tbody>
               {projects.map((project) => (
                 <tr key={project.id}>
-                  <td>100{project.id}</td>
+                  <td>
+                    <span
+                      style={{
+                        background: "#17a2b8",
+                        color: "#fff",
+                        padding: "6px",
+                        borderRadius: "2px",
+                      }}
+                    >
+                      100{project.id}
+                    </span>
+                  </td>
                   <td>{project.title}</td>
                   <td>{project.business_category}</td>
                   <td>{project.description}</td>
                   <td>{project.development_type.join(", ")}</td>
                   <td>{new Date(project.created_at).toLocaleString()}</td>
-                  <td>{project.status}</td>
+                  <td>
+                    <span
+                      style={{
+                        background: "#007bff",
+                        color: "#fff",
+                        padding: "6px",
+                        borderRadius: "2px",
+                      }}
+                    >
+                      {project.status}
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>

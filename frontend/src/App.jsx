@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./assets/css/Index.css";
 import Home from "./components/Home";
 import Dashboard from "./components/Client_dashboard/Dashboard";
+import Admindashboard from "./components/Admin/Admindashboard";
 import Login from "./components/Home/Login";
 import IsLoginModalOpenprovider from "./components/Contexapiproviders/IsLoginModalOpenprovider";
 import { UserContextProvider } from "./components/Contexapiproviders/UserContexProvider";
@@ -36,8 +37,15 @@ function App() {
                     <Messagecontextprovider>
                       <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/dashboard/*" element={<Dashboard />} />
+                        <Route
+                          path="/clientdashboard/*"
+                          element={<Dashboard />}
+                        />
                         <Route path="/login" element={<Login />} />
+                        <Route
+                          path="/admindashboard/*"
+                          element={<Admindashboard />}
+                        />
                       </Routes>
                     </Messagecontextprovider>
                   </Openmodal2contextprovider>

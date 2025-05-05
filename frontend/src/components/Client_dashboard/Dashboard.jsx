@@ -72,6 +72,10 @@ const Dashboard = () => {
         // console.log("User info1:", response.data);
         setUser(response.data);
 
+        if (response.data.user.role == "admin") {
+          navigate("/admindashboard");
+        }
+
         if (!response.data.valid) {
           setIsLoginModalOpen(true);
           navigate("/");
@@ -149,7 +153,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-      {successfullogout == false ? (
+      {successfullogout == false && user?.user?.role !== "admin" ? (
         user && (
           <div>
             <div className="Dashboard-parent">

@@ -18,7 +18,7 @@ class user_accounts extends Controller
         'contactnumber' => 'nullable|max:13',
         'password' => 'required|max:255',
         'confirmedpassword' => 'required|same:password',
-        'serviceType'=>'required'
+        
     ], [
         'name.required' => 'The name field is mandatory.',
         'name.max' => 'The name should not be greater than 255 characters.',

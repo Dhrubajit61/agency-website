@@ -107,7 +107,11 @@ const Login = () => {
 
         setTimeout(() => {
           setIsLoginModalOpen(false);
-          navigate("/Dashboard");
+          if (response1[0].data.user["role"] == "admin") {
+            navigate("/Admindashboard");
+          } else if (response1[0].data.user["role"] == "client") {
+            navigate("/clientdashboard");
+          }
         }, 2000);
       } else {
         //setResponse(response1[0].data.message);

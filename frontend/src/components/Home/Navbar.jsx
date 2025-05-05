@@ -252,7 +252,6 @@ const Navbar = () => {
 
             {user == null ? (
               <li>
-                {" "}
                 <Link
                   to="/"
                   className={
@@ -262,12 +261,16 @@ const Navbar = () => {
                   }
                   onClick={handleOpenModal}
                 >
-                  Client Sign up /Login{" "}
+                  Client Sign up / Login
                 </Link>
+              </li>
+            ) : user.user.role === "admin" ? (
+              <li>
+                <Link to="/admindashboard">Go to Dashboard</Link>
               </li>
             ) : (
               <li>
-                <Link to={"/Dashboard"}>Go to Dashboard</Link>
+                <Link to="/clientdashboard">Go to Dashboard</Link>
               </li>
             )}
           </ul>
