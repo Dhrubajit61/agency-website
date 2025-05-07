@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UserAccount;
 
 class Project_requests extends Model
 {
@@ -26,6 +27,11 @@ class Project_requests extends Model
     {
         return $this->hasMany(ProjectFile::class);
     }
+    //relationship with user
+    public function user()
+{
+    return $this->belongsTo(UserAccount::class, 'user_id');
+}
     
     
 
