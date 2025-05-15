@@ -17,6 +17,9 @@ const MyProjects = () => {
       development_type: [null],
     },
   ]);
+  const handleclickme = (projectid) => {
+    console.log(projectid);
+  };
   const apiUrl = "http://127.0.0.1:8000";
   const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
@@ -31,13 +34,17 @@ const MyProjects = () => {
       }
 
       try {
-        const response = await axios.get(`${apiUrl}/api/myprojects`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.post(
+          `${apiUrl}/api/projectsforadmin`,
+          { status: "pending" },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-        const projectData = response.data.projectlists.map((project) => ({
+        const projectData = response.data.projects.map((project) => ({
           ...project,
           development_type: parseDevelopmentType(project.development_type),
         }));
@@ -76,7 +83,7 @@ const MyProjects = () => {
 
   return (
     <div className="projects-container">
-      <h2 className="projects-title">My Projects</h2>
+      <h2 className="projects-title">Pending Projects List</h2>
       {projects.length == 0 ? (
         <p className="no-projects">Sorry no project found</p>
       ) : projects[0].id == -1 ? (
@@ -90,12 +97,14 @@ const MyProjects = () => {
             <thead>
               <tr>
                 <th>Project ID</th>
+                <th>User's Name</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Description</th>
                 <th>Development Types</th>
                 <th>Created At</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -110,38 +119,62 @@ const MyProjects = () => {
                         borderRadius: "2px",
                       }}
                     >
-                      100{project.id}
+                      {project.id}
                     </span>
                   </td>
+                  <td>{project.user.name}</td>
                   <td>{project.title}</td>
                   <td>{project.business_category}</td>
                   <td>{project.description}</td>
                   <td>{project.development_type.join(", ")}</td>
                   <td>{new Date(project.created_at).toLocaleString()}</td>
                   <td>
-                    {project.status == "approved" ? (
+                    <span
+                      style={{
+                        background: "#007bff",
+                        color: "#fff",
+                        padding: "6px",
+                        borderRadius: "4px",
+                      }}
+                    >
+                      {project.status}
+                    </span>
+                  </td>
+                  <td>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        width: "100%",
+                        justifyContent: "space-between",
+                        gap: "5px",
+                        textAlign: "center",
+                      }}
+                    >
                       <span
                         style={{
-                          background: "rgb(74 181 67)",
+                          background: "rgb(64 193 48)",
                           color: "#fff",
                           padding: "6px",
-                          borderRadius: "2px",
+                          borderRadius: "4px",
+                          cursor: "pointer",
                         }}
+                        onClick={() => handleclickme(project.id)}
                       >
-                        {project.status}
+                        Approve
                       </span>
-                    ) : (
+                      {""}
                       <span
                         style={{
-                          background: "#007bff",
+                          background: "rgb(225 56 29)",
                           color: "#fff",
                           padding: "6px",
-                          borderRadius: "2px",
+                          borderRadius: "4px",
                         }}
                       >
-                        {project.status}
+                        Reject
                       </span>
-                    )}
+                    </div>
                   </td>
                 </tr>
               ))}

@@ -35,11 +35,15 @@ const DashboardHome = () => {
       }
 
       try {
-        const response = await axios.get(`${apiUrl}/api/projectsforadmin`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.post(
+          `${apiUrl}/api/projectsforadmin`,
+          { status: "approved" },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         // const projectData = response.data.projectlists.map((project) => ({
         //   ...project,
@@ -47,8 +51,9 @@ const DashboardHome = () => {
         // }));
 
         // setProjects(projectData);
-        console.log(response.data.pendingprojects);
-        setResponse(response.data.pendingprojects);
+        console.log(response.data.approvedcount);
+        console.log(response.data.pendingcount);
+        setResponse(response.data);
       } catch (error) {
         console.error("Error fetching projects:", error);
         setIsLoginModalOpen(true);
@@ -80,7 +85,7 @@ const DashboardHome = () => {
                   {loading ? (
                     <p>Fetching...</p>
                   ) : (
-                    <p>{response?.length ?? 0}</p>
+                    <p>{response?.pendingcount ?? 0}</p>
                   )}
                 </div>
                 <p>Total Pending Projects </p>
@@ -92,7 +97,7 @@ const DashboardHome = () => {
                   {loading ? (
                     <p>Fetching...</p>
                   ) : (
-                    <p>{response?.length ?? 0}</p>
+                    <p>{response?.approvedcount ?? 0}</p>
                   )}
                 </div>
                 <p>Active Projects </p>
@@ -104,10 +109,10 @@ const DashboardHome = () => {
                   {loading ? (
                     <p>Fetching...</p>
                   ) : (
-                    <p>{response?.length ?? 0}</p>
+                    <p>{response?.totalprojects ?? 0}</p>
                   )}
                 </div>
-                <p>Completed Projects </p>
+                <p>Total Projects </p>
               </div>
             </div>
             <div className="Dashboard-card-elements">
@@ -116,7 +121,7 @@ const DashboardHome = () => {
                   {loading ? (
                     <p>Fetching...</p>
                   ) : (
-                    <p>{response?.length ?? 0}</p>
+                    <p>{response?.pendingcount?.length ?? 0}</p>
                   )}
                 </div>
                 <p>Unread Messages </p>

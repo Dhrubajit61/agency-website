@@ -11,6 +11,7 @@ use App\Http\Controllers\ProjectRequirementController;
 use App\Http\Controllers\userprojectscontroller;
 use App\Http\Controllers\ChangeUserDetailsController;
 use App\Http\Controllers\projectsforadmincontroller;
+use App\Http\Controllers\Projectapprovalcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,5 @@ Route::middleware('auth:api')->get('/user-info', function (Request $request) {
 Route::middleware('auth:api')->get('/myprojects', [userprojectscontroller::class, 'myprojects']);
 Route::middleware('auth:api')->post('/changeuserdetails',[ChangeUserDetailsController::class,'changedetails']);
 //controller for adminprojects
-Route::middleware('auth:api')->get('/projectsforadmin', [projectsforadmincontroller::class, 'adminprojects']);
+Route::middleware('auth:api')->post('/projectsforadmin', [projectsforadmincontroller::class, 'adminprojects']);
+Route::middleware('auth:api')->post('/adminapprove', [Projectapprovalcontroller::class, 'approval']);

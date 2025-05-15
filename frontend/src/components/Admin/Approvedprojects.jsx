@@ -17,6 +17,9 @@ const MyProjects = () => {
       development_type: [null],
     },
   ]);
+  const handleclickme = (projectid) => {
+    console.log(projectid);
+  };
   const apiUrl = "http://127.0.0.1:8000";
   const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
@@ -31,13 +34,17 @@ const MyProjects = () => {
       }
 
       try {
-        const response = await axios.get(`${apiUrl}/api/projectsforadmin`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.post(
+          `${apiUrl}/api/projectsforadmin`,
+          { status: "approved" },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-        const projectData = response.data.pendingprojects.map((project) => ({
+        const projectData = response.data.projects.map((project) => ({
           ...project,
           development_type: parseDevelopmentType(project.development_type),
         }));
@@ -76,7 +83,7 @@ const MyProjects = () => {
 
   return (
     <div className="projects-container">
-      <h2 className="projects-title">My Projects</h2>
+      <h2 className="projects-title">Approved Projects List</h2>
       {projects.length == 0 ? (
         <p className="no-projects">Sorry no project found</p>
       ) : projects[0].id == -1 ? (
@@ -150,7 +157,9 @@ const MyProjects = () => {
                           color: "#fff",
                           padding: "6px",
                           borderRadius: "4px",
+                          cursor: "pointer",
                         }}
+                        onClick={() => handleclickme(project.id)}
                       >
                         Approve
                       </span>

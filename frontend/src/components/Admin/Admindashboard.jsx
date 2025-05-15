@@ -29,8 +29,8 @@ import { Usercontext } from "../Home/Contextapi";
 //import DashboardHome component
 import DashboardHome from "./DashboardHome";
 
-import NewProject from "./NewProject2";
-import MyProjects from "./Myprojects";
+import Approvedprojects from "./Approvedprojects";
+import Pendingprojects from "./Pendingprojects";
 import Myaccount from "./Myaccount";
 
 const Admindashboard = () => {
@@ -188,14 +188,14 @@ const Admindashboard = () => {
                           <a>Dashboard</a>
                         </li>
                         <li
-                          onClick={() => handleclickme("NewProjecteClick")}
+                          onClick={() => handleclickme("ApprovedProject")}
                           style={{ cursor: "pointer" }}
                         >
                           <MdAddTask size={25} />
-                          <a>New Project</a>
+                          <a>Approved Project</a>
                         </li>
                         <li
-                          onClick={() => handleclickme("Myprojects")}
+                          onClick={() => handleclickme("Pendingprojects")}
                           style={{ cursor: "pointer" }}
                         >
                           <MdOutlinePendingActions size={25} />
@@ -241,13 +241,13 @@ const Admindashboard = () => {
                     ) : (
                       <></>
                     )}
-                    {section == "NewProjecteClick" ? (
-                      <NewProject></NewProject>
+                    {section == "ApprovedProject" ? (
+                      <Approvedprojects></Approvedprojects>
                     ) : (
                       <></>
                     )}
-                    {section == "Myprojects" ? (
-                      <MyProjects></MyProjects>
+                    {section == "Pendingprojects" ? (
+                      <Pendingprojects></Pendingprojects>
                     ) : (
                       <></>
                     )}
