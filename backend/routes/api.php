@@ -57,4 +57,5 @@ Route::middleware('auth:api')->get('/myprojects', [userprojectscontroller::class
 Route::middleware('auth:api')->post('/changeuserdetails',[ChangeUserDetailsController::class,'changedetails']);
 //controller for adminprojects
 Route::middleware('auth:api')->post('/projectsforadmin', [projectsforadmincontroller::class, 'adminprojects']);
-Route::middleware('auth:api')->post('/adminapprove', [Projectapprovalcontroller::class, 'approval']);
+// routes/api.php
+Route::middleware('auth:api')->post('/adminaction', [Projectapprovalcontroller::class, 'handleAction']);

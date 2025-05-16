@@ -127,7 +127,9 @@ const MyProjects = () => {
                   <td>{project.business_category}</td>
                   <td>{project.description}</td>
                   <td>{project.development_type.join(", ")}</td>
-                  <td>{new Date(project.created_at).toLocaleString()}</td>
+                  <td>
+                    {new Date(project.created_at).toLocaleString("en-IN")}
+                  </td>
                   <td>
                     <span
                       style={{
@@ -151,19 +153,6 @@ const MyProjects = () => {
                         textAlign: "center",
                       }}
                     >
-                      <span
-                        style={{
-                          background: "rgb(64 193 48)",
-                          color: "#fff",
-                          padding: "6px",
-                          borderRadius: "4px",
-                          cursor: "pointer",
-                        }}
-                        onClick={() => handleclickme(project.id)}
-                      >
-                        Approve
-                      </span>
-                      {""}
                       <span
                         style={{
                           background: "rgb(225 56 29)",

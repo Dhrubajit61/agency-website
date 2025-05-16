@@ -8,6 +8,16 @@ use App\Models\Project_requests;
 
 class Projectapprovalcontroller extends Controller
 {
+    public function handleAction(Request $request)
+    {
+        $status = $request->input('status');
+
+        if ($status === 'reject') {
+            return $this->reject($request);
+        } else {
+            return $this->approval($request);
+        }
+    }
     public function approval(Request $req)
 {
     $user = Auth::user();
