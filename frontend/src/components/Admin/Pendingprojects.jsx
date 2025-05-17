@@ -5,8 +5,8 @@ import "../../assets/css/Myprojects.css"; // ⬅️ Custom CSS file
 import loading_gif from "../../assets/files/loading_gif.gif";
 import { OpenLoginModalContext } from "../Home/Contextapi";
 import { Messagecontext } from "../Home/Contextapi";
-import Modal2 from "./Modal2";
 import { Openmodal2context } from "../Home/Contextapi";
+import checkmark from "../../assets/files/checkmark2.gif";
 
 const MyProjects = () => {
   const { message, setMessage } = useContext(Messagecontext);
@@ -19,6 +19,19 @@ const MyProjects = () => {
   const token = localStorage.getItem("access_token");
   const navigate = useNavigate();
   const [reloadProjects, setReloadProjects] = useState(false);
+  const [response, setResponse] = useState(false);
+  const [projectapproved, setProjectapproved] = useState(false);
+
+  const handleOverlayClick = (e) => {
+    // Check if click is outside the modal area
+    if (e.target.classList.contains("modal-overlay")) {
+      setOpenmodal2context(false);
+    }
+  };
+  const handleCloseModal2 = () => {
+    setOpenmodal2context(false);
+    setProjectapproved(false);
+  };
 
   const [projects, setProjects] = useState([
     {
@@ -26,27 +39,55 @@ const MyProjects = () => {
       development_type: [null],
     },
   ]);
+  const [projectinfo, setProjectinfo] = useState({
+    project_id: "",
+    projectapproval: "",
+    staffselection: "",
+  });
+  const handleChange = (e) => {
+    setProjectinfo({
+      ...projectinfo,
+      [e.target.name]: e.target.value,
+    });
+  };
   const handleclickme = async (projectid, approval) => {
-    console.log(projectid);
     setOpenmodal2context(true);
-
-    // try {
-    //   const response = await axios.post(
-    //     `${apiUrl}/api/adminaction`,
-    //     { status: "approved", project_id: projectid }, // assuming you want to send project ID
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   );
-
-    //   console.log(response);
-    //   alert("Project approved successfully");
-    //   setReloadProjects((prev) => !prev);
-    // } catch (error) {
-    //   console.error("Error approving project:", error);
-    // }
+    setProjectinfo((prev) => ({
+      ...prev,
+      project_id: projectid,
+      projectapproval: approval,
+    }));
+  };
+  useEffect(() => {
+    console.log(projectinfo);
+  }, [projectinfo]);
+  const handleclickme2 = async () => {
+    console.log("this is handleclickme2");
+    console.log(projectinfo);
+    try {
+      const response = await axios.post(
+        `${apiUrl}/api/adminaction`,
+        projectinfo, // assuming you want to send project ID
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      setResponse(response.data);
+      // alert("Project approved successfully");
+      setReloadProjects((prev) => !prev);
+    } catch (error) {
+      console.error("Error approving project:", error);
+    } finally {
+      setProjectapproved(true);
+      setProjectinfo({
+        project_id: "",
+        projectapproval: "",
+        staffselection: "",
+      });
+    }
   };
 
   useEffect(() => {
@@ -202,6 +243,7 @@ const MyProjects = () => {
                           padding: "6px",
                           borderRadius: "4px",
                         }}
+                        onClick={() => handleclickme(project.id, "reject")}
                       >
                         Reject
                       </span>
@@ -213,7 +255,95 @@ const MyProjects = () => {
           </div>
         )}
       </div>
-      {openmodal2context && <Modal2></Modal2>}
+      {openmodal2context && (
+        <div className="modal-overlay">
+          <div className="modal checkmodal">
+            <button className="close-button" onClick={handleCloseModal2}>
+              &times;
+            </button>
+
+            {projectapproved ? (
+              <div className="checkmark">
+                <img src={checkmark} alt="Checkmark" />
+                <h4>Success</h4>
+                <p style={{ letterSpacing: "unset" }}>{response.message} </p>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "50px",
+                  justifyContent: "center",
+                  textAlign: "center",
+                }}
+              >
+                {projectinfo.projectapproval == "approve" ? (
+                  <>
+                    <h3>Please assign a staff to this project</h3>
+                    <select
+                      name="staffselection"
+                      style={{ height: "25px" }}
+                      onChange={handleChange}
+                      value={projectinfo.staffselection}
+                    >
+                      <option value="staff1">Staff 1</option>
+                      <option value="staff2">Staff 2</option>
+                      <option value="staff3">Staff 3</option>
+                    </select>
+                  </>
+                ) : (
+                  <>
+                    <h3>Please write a reason of rejection</h3>
+                    <textarea
+                      name=""
+                      id=""
+                      style={{ height: "70px", resize: "none" }}
+                    ></textarea>
+                  </>
+                )}
+                <div style={{ display: "flex" }}>
+                  <button
+                    onClick={handleCloseModal2}
+                    style={{
+                      width: "40%",
+                      marginInline: "auto",
+                      padding: "8px",
+                      backgroundColor: "red",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Cancel
+                  </button>
+
+                  <button
+                    onClick={handleclickme2}
+                    style={{
+                      width: "40%",
+                      marginInline: "auto",
+                      padding: "8px",
+                      backgroundColor: "#39a94c",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {projectinfo.projectapproval == "approve" ? (
+                      <>Approve</>
+                    ) : (
+                      <>Reject</>
+                    )}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 };
