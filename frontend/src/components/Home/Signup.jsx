@@ -91,7 +91,8 @@ const Signup = () => {
         delay,
       ]);
       setResponse(response1[0].data);
-      // console.log(response1);
+      console.log("signup response part");
+      console.log(response1);
 
       if (response1[0].data.success) {
         setIsSignupModalOpen(false);

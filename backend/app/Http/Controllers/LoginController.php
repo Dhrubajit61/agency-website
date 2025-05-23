@@ -22,7 +22,7 @@ class LoginController extends Controller
         if (!$user) {
             return response()->json([
                 'success' => false,
-                'message' => ['User with this email does not exist.']
+                'errors' => ['Wrong username or password']
             ], 200);
         }
 
@@ -30,7 +30,7 @@ class LoginController extends Controller
         if (!Hash::check($request->input('password'), $user->password)) {
             return response()->json([
                 'success' => false,
-                'message' => ['Password is incorrect.']
+                'errors' => ['Wrong username or password']
             ], 200);
         }
 

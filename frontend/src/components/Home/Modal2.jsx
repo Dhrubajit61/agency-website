@@ -57,9 +57,11 @@ const Modal2 = () => {
               </div>
             ) : (
               <div className="checkmark checkerror">
-                {/* {response &&
-                  response.map((error, index) => <p key={index}>* {error}</p>)} */}
-                {response && <p>Please Enter correct Email & Password</p>}
+                {response &&
+                  response.map((error, index) => <p key={index}>* {error}</p>)}
+                {/* {response?.message && (
+                  <p>Please Enter correct Email & Password</p>
+                )} */}
               </div>
             )}
           </h1>

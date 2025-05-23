@@ -114,9 +114,9 @@ const Login = () => {
           }
         }, 2000);
       } else {
-        //setResponse(response1[0].data.message);
+        setResponse(response1[0].data.errors);
         console.log("else part");
-        //setIsModalOpen2(true);
+        setIsModalOpen2(true);
       }
     } catch (error) {
       alert(error.message + " occured, Please try again later");

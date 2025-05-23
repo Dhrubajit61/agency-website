@@ -11,14 +11,14 @@ class user_accounts extends Controller
 {
     public function storeusers(Request $request)
 {
-    $validator = Validator::make($request->all(), [
+     $validator = Validator::make($request->all(), [
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:user_accounts,email|max:255',
-        'country_code'=>'nullable|string|max:20',
-        'contactnumber' => 'nullable|max:13',
+        'country_code'=>'required|string|max:20',
+        'contactnumber' => 'required|max:13',
         'password' => 'required|max:255',
         'confirmedpassword' => 'required|same:password',
-        
+        'serviceType'=>'required'
     ], [
         'name.required' => 'The name field is mandatory.',
         'name.max' => 'The name should not be greater than 255 characters.',
@@ -28,8 +28,6 @@ class user_accounts extends Controller
         'contactnumber.max' => 'The contact number should not be greater than 13 characters.',
         'confirmedpassword.same' => 'Password and confirm password did not match.',
     ]);
-    
-
     if ($validator->fails()) {
         // Return all errors in a JSON response
         return response()->json([
