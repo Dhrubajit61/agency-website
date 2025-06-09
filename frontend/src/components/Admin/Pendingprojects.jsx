@@ -21,6 +21,7 @@ const MyProjects = () => {
   const [reloadProjects, setReloadProjects] = useState(false);
   const [response, setResponse] = useState(false);
   const [projectapproved, setProjectapproved] = useState(false);
+  const [staff, setStaff] = useState([]);
 
   const handleOverlayClick = (e) => {
     // Check if click is outside the modal area
@@ -31,6 +32,8 @@ const MyProjects = () => {
   const handleCloseModal2 = () => {
     setOpenmodal2context(false);
     setProjectapproved(false);
+    setStaff([]);
+    setProjectinfo({ staffselection: "" });
   };
 
   const [projects, setProjects] = useState([
@@ -52,12 +55,36 @@ const MyProjects = () => {
   };
   const handleclickme = async (projectid, approval) => {
     setOpenmodal2context(true);
+    fetchstaffinfo();
     setProjectinfo((prev) => ({
       ...prev,
       project_id: projectid,
       projectapproval: approval,
     }));
   };
+  const fetchstaffinfo = async () => {
+    if (!token) {
+      setIsLoginModalOpen(true);
+      setMessage("You have been logged out");
+      navigate("/");
+      return;
+    }
+    try {
+      const staffs = await axios.get(`${apiUrl}/api/staff-info`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(staffs);
+      if (staffs.data.message === "true") {
+        setStaff(staffs.data.staffs);
+      }
+    } catch (error) {
+      console.error("Some error occured while fetching staff details" + error);
+    } finally {
+    }
+  };
+
   useEffect(() => {
     console.log(projectinfo);
   }, [projectinfo]);
@@ -287,9 +314,12 @@ const MyProjects = () => {
                       onChange={handleChange}
                       value={projectinfo.staffselection}
                     >
-                      <option value="staff1">Staff 1</option>
-                      <option value="staff2">Staff 2</option>
-                      <option value="staff3">Staff 3</option>
+                      <option value="">-- Choose a Staff --</option>
+                      {staff.map((staff) => (
+                        <option key={staff.id} value={staff.id}>
+                          {staff.name} ({staff.email})
+                        </option>
+                      ))}
                     </select>
                   </>
                 ) : (

@@ -41,11 +41,15 @@ class Projectapprovalcontroller extends Controller
     }
     
     $project->status = 'approved'; // or 'rejected', depending on your logic
+    $project->assigned_to=$req->staffselection;
     $project->save();
+
+   $staff = UserAccount::where('id', $project->assigned_to)->first();
+
 
     return response()->json([
         'success' => true,
-        'message' => 'Project approved successfully.',
+        'message' => 'Successfully Approved & Assigned to '.$staff->name,
     ], 200);
 }
 

@@ -12,6 +12,7 @@ use App\Http\Controllers\userprojectscontroller;
 use App\Http\Controllers\ChangeUserDetailsController;
 use App\Http\Controllers\projectsforadmincontroller;
 use App\Http\Controllers\Projectapprovalcontroller;
+use App\Http\Controllers\Staffinfocontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,4 @@ Route::middleware('auth:api')->post('/changeuserdetails',[ChangeUserDetailsContr
 Route::middleware('auth:api')->post('/projectsforadmin', [projectsforadmincontroller::class, 'adminprojects']);
 // routes/api.php
 Route::middleware('auth:api')->post('/adminaction', [Projectapprovalcontroller::class, 'handleAction']);
+Route::middleware('auth:api')->get('/staff-info',[Staffinfocontroller::class, 'getstaffinfo']);

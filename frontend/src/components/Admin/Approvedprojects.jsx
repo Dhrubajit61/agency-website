@@ -103,6 +103,7 @@ const MyProjects = () => {
                 <th>Description</th>
                 <th>Development Types</th>
                 <th>Created At</th>
+                <th>Assigned to</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
@@ -130,6 +131,7 @@ const MyProjects = () => {
                   <td>
                     {new Date(project.created_at).toLocaleString("en-IN")}
                   </td>
+                  <td>{project.assigned_staff.name}</td>
                   <td>
                     <span
                       style={{

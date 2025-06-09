@@ -32,6 +32,10 @@ class Project_requests extends Model
 {
     return $this->belongsTo(UserAccount::class, 'user_id');
 }
+public function assignedStaff()
+{
+    return $this->belongsTo(UserAccount::class, 'assigned_to', 'id');
+}
     
     
 
